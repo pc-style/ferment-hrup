@@ -173,7 +173,7 @@ export default function HomePage() {
               transition={{ duration: 0.6 }}
             >
               <h2 className="font-poppins font-bold text-3xl md:text-4xl text-white mb-6">
-                WIZJA
+                MISJA
               </h2>
               <p className="font-poppins font-light text-brand-grey text-base md:text-lg leading-relaxed">
                 Wspieramy instytucje kultury i kina w skutecznym pozyskiwaniu,
