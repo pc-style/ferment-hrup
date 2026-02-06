@@ -178,17 +178,6 @@ const leaderPackages = [
 
 const additionalPackages = [
   {
-    name: 'HRup FAST',
-    price: '+30% do pakietu',
-    description: 'Tryb pilny "na wczoraj" – skrócony proces, priorytetowy sourcing, szybka rekomendacja',
-    icon: (
-      <svg className="w-8 h-8" viewBox="0 0 32 32" fill="none">
-        <path d="M16 4v12l8 4" stroke="#e00371" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <circle cx="16" cy="16" r="12" stroke="#e00371" strokeWidth="2"/>
-      </svg>
-    ),
-  },
-  {
     name: 'HRup Onboard',
     price: '2 500 zł',
     description: 'Mini-onboarding: checklisty, instrukcje, monitoring 30-60 dni',
@@ -218,6 +207,17 @@ const additionalPackages = [
     icon: (
       <svg className="w-8 h-8" viewBox="0 0 32 32" fill="none">
         <path d="M16 6l3 6 7 1-5 5 1.2 6.5L16 21.5l-6.2 3L11 18l-5-5 7-1z" stroke="#e00371" strokeWidth="2" strokeLinejoin="round"/>
+      </svg>
+    ),
+  },
+  {
+    name: 'HRup FAST',
+    price: '+30% do pakietu',
+    description: 'Tryb pilny "na wczoraj" – skrócony proces, priorytetowy sourcing, szybka rekomendacja',
+    icon: (
+      <svg className="w-8 h-8" viewBox="0 0 32 32" fill="none">
+        <path d="M16 4v12l8 4" stroke="#e00371" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <circle cx="16" cy="16" r="12" stroke="#e00371" strokeWidth="2"/>
       </svg>
     ),
   },

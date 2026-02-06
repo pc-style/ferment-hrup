@@ -211,6 +211,9 @@ export default function ContactPage() {
             transition={{ duration: 0.7 }}
             className="flex flex-col md:flex-row items-center justify-center gap-6 text-center"
           >
+            <p className="text-white font-medium">
+              HRup to część kolektywu{" "}
+            </p>
             <a 
               href="https://ferment.com.pl/" 
               target="_blank" 
@@ -219,24 +222,10 @@ export default function ContactPage() {
             >
               <img 
                 src="/logo.webp" 
-                alt="Ferment" 
+                alt="ferment" 
                 className="h-10 w-auto"
               />
             </a>
-            <div className="h-8 w-px bg-brand-grey/30 hidden md:block" />
-            <div>
-              <p className="text-white font-medium">
-                HRup to część kolektywu{" "}
-                <a 
-                  href="https://ferment.com.pl/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-brand-pink hover:underline"
-                >
-                  Ferment
-                </a>
-              </p>
-            </div>
           </motion.div>
         </div>
       </section>
