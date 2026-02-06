@@ -17,9 +17,8 @@ export default function Navbar() {
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 bg-brand-black/90 backdrop-blur-md border-b border-brand-white/5">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-20">
-          <Link to="/" className="flex items-center gap-0 text-2xl font-bold tracking-tight">
-            <span className="text-brand-pink">HR</span>
-            <span className="text-brand-white">up</span>
+          <Link to="/" className="flex items-center">
+            <img src="/logo.png" alt="HRup" className="h-10 w-auto" />
           </Link>
 
           <div className="hidden lg:flex items-center gap-8">
