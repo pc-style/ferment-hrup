@@ -273,15 +273,19 @@ export default function AboutPage() {
                 />
               </a>
               <div>
-                <h3 className="text-2xl font-bold text-white mb-3">
-                  HRup to część kolektywu{" "}
+                <h3 className="text-2xl font-bold text-white mb-3 flex items-center gap-3 flex-wrap">
+                  <span>HRup to część kolektywu</span>
                   <a 
                     href="https://ferment.com.pl/" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-brand-pink hover:underline"
+                    className="hover:opacity-80 transition-opacity duration-200"
                   >
-                    Ferment
+                    <img 
+                      src="/logo.webp" 
+                      alt="ferment" 
+                      className="h-8 w-auto"
+                    />
                   </a>
                 </h3>
                 <p className="text-brand-grey leading-relaxed">
