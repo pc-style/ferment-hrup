@@ -14,6 +14,7 @@ export default function Footer() {
     <footer className="bg-brand-dark font-poppins">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+          {/* Brand Section */}
           <div className="flex flex-col gap-4">
             <Link to="/" className="text-2xl font-bold tracking-tight">
               <span className="text-brand-pink">HR</span>
@@ -22,9 +23,28 @@ export default function Footer() {
             <p className="text-brand-grey text-sm leading-relaxed">
               ludzie z kulturą
             </p>
+            <p className="text-brand-grey text-sm leading-relaxed">
+              Partner HR dla branży kulturalnej
+            </p>
             <div className="flex items-center gap-4 mt-2">
               <a
-                href="https://facebook.com"
+                href="https://www.linkedin.com/company/ferment-kolektiv/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="text-brand-grey hover:text-brand-pink transition-colors duration-200"
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </a>
+              <a
+                href="https://www.facebook.com/fermentkolektiv"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
@@ -40,7 +60,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/fermentkolektiv/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
@@ -58,6 +78,7 @@ export default function Footer() {
             </div>
           </div>
 
+          {/* Navigation Section */}
           <div className="flex flex-col gap-4">
             <h4 className="text-brand-white text-sm font-semibold tracking-widest uppercase">
               Nawigacja
@@ -75,15 +96,36 @@ export default function Footer() {
             </div>
           </div>
 
+          {/* Ferment Kolektiv Section */}
           <div className="flex flex-col gap-4">
             <h4 className="text-brand-white text-sm font-semibold tracking-widest uppercase">
               Realizacja
             </h4>
+            <a
+              href="https://ferment.com.pl/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-3 hover:opacity-90 transition-opacity duration-200"
+            >
+              <img
+                src="/logo.webp"
+                alt="Ferment Kolektiv"
+                className="h-8 w-auto"
+              />
+            </a>
             <p className="text-brand-grey text-sm leading-relaxed">
-              Projekt{" "}
-              <span className="text-brand-pink font-medium">
+              HRup to projekt{" "}
+              <a
+                href="https://ferment.com.pl/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brand-pink font-medium hover:underline"
+              >
                 Ferment Kolektiv
-              </span>
+              </a>
+            </p>
+            <p className="text-brand-grey text-xs leading-relaxed">
+              Wspieramy instytucje kultury i kina w Polsce od 2019 roku.
             </p>
           </div>
         </div>
@@ -94,9 +136,16 @@ export default function Footer() {
           <p className="text-brand-grey text-xs">
             &copy; {new Date().getFullYear()} HRup. Wszelkie prawa zastrzeżone.
           </p>
-          <p className="text-brand-grey text-xs">
-            Stworzone przez{" "}
-            <span className="text-brand-pink">Ferment Kolektiv</span>
+          <p className="text-brand-grey text-xs flex items-center gap-2">
+            Projekt{" "}
+            <a
+              href="https://ferment.com.pl/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-brand-pink hover:underline"
+            >
+              Ferment Kolektiv
+            </a>
           </p>
         </div>
       </div>

@@ -7,18 +7,17 @@ const fadeUp = {
 }
 
 const packages = [
-  "Template",
-  "START",
-  "CORE",
-  "PRO",
-  "FAST",
-  "Onboard",
-  "Team",
-  "Culture",
-  "Inne",
+  { group: "Frontline", items: ["Template", "START", "CORE", "PRO"] },
+  { group: "Talent", items: ["START", "CORE", "PRO"] },
+  { group: "Leader", items: ["CORE", "PRO"] },
+  { group: "Dodatkowe", items: ["FAST", "Onboard", "Team", "Culture"] },
 ]
 
-const team = ["Asia", "Paulina", "Radek"]
+const team = [
+  { name: "Asia", role: "HR & Rekrutacja" },
+  { name: "Paulina", role: "Processes & Culture" },
+  { name: "Radek", role: "Strategy & Leadership" },
+]
 
 const inputClasses =
   "w-full rounded-lg border border-brand-grey/30 bg-brand-black px-4 py-3 text-white placeholder:text-brand-grey/50 focus:border-brand-pink focus:outline-none focus:ring-1 focus:ring-brand-pink/30 transition"
@@ -28,7 +27,8 @@ export default function ContactPage() {
 
   return (
     <main className="font-poppins">
-      <section className="flex h-[40vh] flex-col items-center justify-center bg-brand-black px-6 text-center">
+      {/* Hero Section */}
+      <section className="flex min-h-[40vh] flex-col items-center justify-center bg-brand-black px-6 pt-8 text-center">
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -47,6 +47,7 @@ export default function ContactPage() {
         </motion.h1>
       </section>
 
+      {/* Contact Form Section */}
       <section className="bg-brand-dark py-24">
         <div className="mx-auto grid max-w-[1280px] gap-16 px-6 lg:grid-cols-2">
           <motion.div
@@ -59,36 +60,50 @@ export default function ContactPage() {
             <h2 className="mb-6 text-3xl font-bold md:text-4xl">
               Porozmawiajmy
             </h2>
-            <p className="mb-10 text-brand-grey">
-              Start współpracy od: 01.2026
+            <div className="flex items-baseline gap-2 mb-6">
+              <span className="text-brand-grey text-sm">Start współpracy od:</span>
+              <span className="text-2xl font-bold text-white">01<span className="text-brand-pink">.</span>2026</span>
+            </div>
+            <p className="mb-8 text-brand-grey">
+              Konsultacje możliwe już teraz – skontaktuj się z naszym zespołem.
             </p>
 
-            <div className="mb-10 space-y-3">
-              {team.map((name, i) => (
-                <motion.p
-                  key={name}
+            <div className="mb-10 space-y-4">
+              {team.map((member, i) => (
+                <motion.div
+                  key={member.name}
                   variants={fadeUp}
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
-                  className="border-l-2 border-brand-pink py-2 pl-5 text-lg font-light text-white"
+                  className="flex items-center gap-4 rounded-xl bg-brand-black/50 border border-brand-grey/10 p-4"
                 >
-                  {name}
-                </motion.p>
+                  <div className="w-12 h-12 rounded-full bg-brand-pink/10 flex items-center justify-center shrink-0">
+                    <span className="text-brand-pink font-bold">{member.name[0]}</span>
+                  </div>
+                  <div>
+                    <p className="text-white font-semibold">{member.name}</p>
+                    <p className="text-brand-grey text-sm">{member.role}</p>
+                  </div>
+                </motion.div>
               ))}
             </div>
 
-            <motion.p
+            <motion.div
               variants={fadeUp}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="max-w-md leading-relaxed text-brand-grey"
+              className="rounded-xl border border-brand-pink/20 bg-gradient-to-br from-brand-pink/5 to-transparent p-6"
             >
-              Skontaktuj się z nami, aby omówić potrzeby Twojej organizacji.
-            </motion.p>
+              <p className="text-white font-semibold mb-2">Jak wygląda start?</p>
+              <p className="text-brand-grey text-sm leading-relaxed">
+                Krótka rozmowa → doprecyzowanie potrzeb → wybór pakietu → podpisanie umowy → start. 
+                Bez zbędnych formalności.
+              </p>
+            </motion.div>
           </motion.div>
 
           <motion.div
@@ -107,38 +122,45 @@ export default function ContactPage() {
             >
               <div>
                 <label className="mb-1.5 block text-sm text-brand-grey">
-                  Imię i nazwisko
+                  Imię i nazwisko *
                 </label>
-                <input type="text" className={inputClasses} />
+                <input type="text" required className={inputClasses} placeholder="Jan Kowalski" />
               </div>
 
               <div>
                 <label className="mb-1.5 block text-sm text-brand-grey">
-                  Email
+                  Email *
                 </label>
-                <input type="email" className={inputClasses} />
+                <input type="email" required className={inputClasses} placeholder="jan@example.com" />
               </div>
 
               <div>
                 <label className="mb-1.5 block text-sm text-brand-grey">
                   Organizacja
                 </label>
-                <input type="text" className={inputClasses} />
+                <input type="text" className={inputClasses} placeholder="Nazwa organizacji" />
               </div>
 
               <div>
                 <label className="mb-1.5 block text-sm text-brand-grey">
-                  Pakiet
+                  Interesujący pakiet
                 </label>
                 <select className={inputClasses + " appearance-none"}>
                   <option value="" className="bg-brand-black">
-                    Wybierz pakiet
+                    Wybierz pakiet (opcjonalnie)
                   </option>
-                  {packages.map((pkg) => (
-                    <option key={pkg} value={pkg} className="bg-brand-black">
-                      {pkg}
-                    </option>
+                  {packages.map((group) => (
+                    <optgroup key={group.group} label={group.group} className="bg-brand-black">
+                      {group.items.map((pkg) => (
+                        <option key={`${group.group}-${pkg}`} value={`${group.group} ${pkg}`} className="bg-brand-black">
+                          {group.group} {pkg}
+                        </option>
+                      ))}
+                    </optgroup>
                   ))}
+                  <option value="Inne" className="bg-brand-black">
+                    Inne / Nie wiem jeszcze
+                  </option>
                 </select>
               </div>
 
@@ -146,45 +168,76 @@ export default function ContactPage() {
                 <label className="mb-1.5 block text-sm text-brand-grey">
                   Wiadomość
                 </label>
-                <textarea className={inputClasses + " min-h-32 resize-y"} />
+                <textarea 
+                  className={inputClasses + " min-h-32 resize-y"} 
+                  placeholder="Opowiedz nam o swoich potrzebach rekrutacyjnych..."
+                />
               </div>
 
               <button
                 type="submit"
-                className="w-full rounded-lg bg-brand-pink py-3 font-semibold text-white transition hover:bg-brand-pink/80"
+                className="w-full rounded-lg bg-brand-pink py-4 font-semibold text-white transition-all duration-300 hover:bg-brand-pink/80 hover:shadow-[0_0_20px_rgba(224,3,113,0.2)]"
               >
-                WYŚLIJ
+                WYŚLIJ WIADOMOŚĆ
               </button>
 
               {sent && (
-                <motion.p
+                <motion.div
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4 }}
-                  className="text-center text-sm text-brand-pink"
+                  className="text-center rounded-lg bg-brand-pink/10 border border-brand-pink/20 p-4"
                 >
-                  Wiadomość wysłana!
-                </motion.p>
+                  <p className="text-brand-pink font-medium">
+                    Dziękujemy! Wiadomość została wysłana.
+                  </p>
+                  <p className="text-brand-grey text-sm mt-1">
+                    Odezwiemy się najszybciej jak to możliwe.
+                  </p>
+                </motion.div>
               )}
             </form>
           </motion.div>
         </div>
       </section>
 
+      {/* Ferment Kolektiv Section */}
       <section className="bg-brand-black py-16">
-        <div className="mx-auto max-w-[1280px] px-6 text-center">
+        <div className="mx-auto max-w-[1280px] px-6">
           <motion.div
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
+            className="flex flex-col md:flex-row items-center justify-center gap-6 text-center"
           >
-            <p className="text-2xl font-bold text-white md:text-3xl">
-              Ferment Kolektiv
-            </p>
-            <p className="mt-2 text-lg text-brand-grey">Projekt HRup</p>
-            <div className="mx-auto mt-6 h-px w-24 bg-brand-pink" />
+            <a 
+              href="https://ferment.com.pl/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition-opacity duration-200"
+            >
+              <img 
+                src="/logo.webp" 
+                alt="Ferment Kolektiv" 
+                className="h-10 w-auto"
+              />
+            </a>
+            <div className="h-8 w-px bg-brand-grey/30 hidden md:block" />
+            <div>
+              <p className="text-white font-medium">
+                HRup to projekt{" "}
+                <a 
+                  href="https://ferment.com.pl/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-brand-pink hover:underline"
+                >
+                  Ferment Kolektiv
+                </a>
+              </p>
+            </div>
           </motion.div>
         </div>
       </section>

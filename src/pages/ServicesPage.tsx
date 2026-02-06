@@ -17,34 +17,49 @@ const fadeIn = {
   transition: { duration: 0.5 },
 };
 
+const strategicHRItems = [
+  "Projektowanie struktury organizacji w oparciu o role i potrzeby biznesowe",
+  "Tworzenie i monitorowanie parametrów dot. zaangażowania, efektywności i produktywności",
+  "Tworzenie kultury organizacyjnej wspierającej odpowiedzialność",
+];
+
 const recruitmentSteps = [
   "Stworzenie profilu idealnego kandydata",
-  "Stworzenie przyciągającego uwagę ogłoszenia rekrutacyjnego i/lub innych materiałów marketingowych",
-  "Zaprojektowanie kampanii reklamowej dotyczącej rekrutacji",
-  "Przeprowadzenie pełnego procesu rekrutacji (preselekcja, rozmowy, analiza zadań, rozmowy finałowe, informacje odmowne)",
+  "Stworzenie przyciągającego uwagę ogłoszenia rekrutacyjnego i/lub innych materiałów marketingowych (foto/video)",
+  "Zaprojektowanie kampanii reklamowej (performance w SoMe, serwisy rekrutacyjne, działania analogowe)",
+  "Przeprowadzenie pełnego procesu rekrutacji: preselekcja aplikacji, rozmowy badające postawę, przygotowanie mentalne, kwalifikacje i dopasowanie do zespołu",
+  "Analiza zadań rekrutacyjnych i rozmowy finałowe",
+  "Właściwe przekazywanie informacji odmownych",
 ];
 
 const onboardingItems = [
-  "Mapowanie kompetencji",
-  "Uzupełnienie wiedzy o rynku",
-  "Wyznaczenie parametrów",
+  "Mapowanie kompetencji potrzebnych do pracy",
+  "Uzupełnienie wiedzy o rynku i jego mechanizmach",
+  "Wyznaczenie parametrów sukcesu na stanowisku",
   "Monitorowanie i optymalizacja",
-  "Ścieżka off-boarding",
+  "Ścieżka off-boarding: bezpieczne i pełne szacunku rozstanie z pracownikiem",
 ];
 
 const trainingTopics = [
   "Budowanie kultury feedbacku",
-  "Rola empatii w komunikacji",
+  "Rola empatii w komunikacji i współpracy",
   "Delegowanie odpowiedzialności",
-  "Przejrzystość ról",
-  "Modelowanie kultury higieny pracy",
-  "Rozwiązywanie problemów w zespole",
+  "Przejrzystość ról i stanowisk",
+  "Modelowanie kultury higieny pracy i wellbeingu",
+  "Standardy rozwiązywania konfliktów w zespole",
+];
+
+const teamMembers = [
+  { name: "Asia", role: "HR & Rekrutacja" },
+  { name: "Paulina", role: "Processes & Culture" },
+  { name: "Radek", role: "Strategy & Leadership" },
 ];
 
 export default function ServicesPage() {
   return (
     <main className="font-poppins">
-      <section className="flex min-h-[40vh] flex-col items-center justify-center bg-brand-black px-6">
+      {/* Hero Section */}
+      <section className="flex min-h-[40vh] flex-col items-center justify-center bg-brand-black px-6 pt-8">
         <motion.h1
           {...fadeUp}
           className="text-center text-5xl font-bold tracking-tight md:text-7xl"
@@ -56,63 +71,80 @@ export default function ServicesPage() {
           transition={{ duration: 0.6, ease, delay: 0.15 }}
           className="mt-4 text-lg text-brand-grey md:text-xl"
         >
-          Nasze usługi
+          Zakres proponowanych usług
         </motion.p>
       </section>
 
-      <section className="bg-brand-dark py-24">
+      {/* Services Grid */}
+      <section className="bg-brand-dark py-20">
         <div className="mx-auto max-w-[1280px] space-y-0">
+          {/* HR Strategiczny */}
           <motion.div
             {...fadeUp}
-            className="grid gap-12 bg-brand-dark px-6 py-20 md:grid-cols-2 md:items-center md:gap-16"
+            className="grid gap-12 bg-brand-dark px-6 py-16 md:grid-cols-2 md:items-center md:gap-16"
           >
             <div className="flex items-center justify-center md:order-2">
-              <div className="flex h-32 w-32 items-center justify-center rounded-2xl bg-brand-pink/10">
-                <svg
-                  width="64"
-                  height="64"
-                  viewBox="0 0 64 64"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <rect
-                    x="8"
-                    y="8"
-                    width="48"
-                    height="48"
-                    rx="8"
-                    stroke="#e00371"
-                    strokeWidth="3"
-                  />
-                  <circle cx="32" cy="28" r="8" stroke="#e00371" strokeWidth="3" />
-                  <path
-                    d="M18 50c0-7.732 6.268-14 14-14s14 6.268 14 14"
-                    stroke="#e00371"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                  />
-                </svg>
+              <div className="relative">
+                <div className="flex h-40 w-40 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-pink/20 to-brand-pink/5 border border-brand-pink/20">
+                  <svg
+                    width="72"
+                    height="72"
+                    viewBox="0 0 72 72"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect
+                      x="12"
+                      y="12"
+                      width="48"
+                      height="48"
+                      rx="8"
+                      stroke="#e00371"
+                      strokeWidth="2.5"
+                    />
+                    <circle cx="36" cy="30" r="8" stroke="#e00371" strokeWidth="2.5" />
+                    <path
+                      d="M20 54c0-8.837 7.163-16 16-16s16 7.163 16 16"
+                      stroke="#e00371"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </div>
+                <div className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-brand-pink flex items-center justify-center text-white text-xs font-bold">
+                  a
+                </div>
               </div>
             </div>
             <div className="md:order-1">
+              <p className="text-brand-pink text-sm font-semibold tracking-wider uppercase mb-2">Usługa A</p>
               <h2 className="text-3xl font-bold text-white md:text-4xl">
                 HR Strategiczny na godziny
               </h2>
-              <p className="mt-6 leading-relaxed text-brand-grey">
-                Projektowanie struktury organizacji w oparciu o role i potrzeby
-                biznesowe, tworzenie i monitorowanie parametrów dot. zaangażowania,
-                efektywności i produktywności, tworzenie kultury organizacyjnej
-                wspierającej odpowiedzialność.
-              </p>
+              <ul className="mt-6 space-y-4">
+                {strategicHRItems.map((item, i) => (
+                  <motion.li
+                    key={i}
+                    {...fadeIn}
+                    transition={{ duration: 0.4, delay: 0.1 * i }}
+                    className="flex items-start gap-3 text-brand-grey"
+                  >
+                    <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-brand-pink mt-2" />
+                    <span className="leading-relaxed">{item}</span>
+                  </motion.li>
+                ))}
+              </ul>
             </div>
           </motion.div>
 
+          {/* Rekrutacje */}
           <motion.div
             {...fadeUp}
             transition={{ duration: 0.6, ease, delay: 0.1 }}
-            className="grid gap-12 bg-brand-black px-6 py-20 md:grid-cols-2 md:items-start md:gap-16"
+            className="grid gap-12 bg-brand-black px-6 py-16 md:grid-cols-2 md:items-start md:gap-16"
           >
             <div>
+              <p className="text-brand-pink text-sm font-semibold tracking-wider uppercase mb-2">Usługa B</p>
               <h2 className="text-3xl font-bold text-white md:text-4xl">
                 Rekrutacje na stanowiska funkcyjne
               </h2>
@@ -120,16 +152,16 @@ export default function ServicesPage() {
                 Kompleksowy proces rekrutacji od A do Z.
               </p>
             </div>
-            <div className="relative space-y-8 pl-8">
-              <div className="absolute top-0 bottom-0 left-[15px] w-px bg-brand-pink/30" />
+            <div className="relative space-y-6 pl-8">
+              <div className="absolute top-0 bottom-0 left-[15px] w-px bg-gradient-to-b from-brand-pink via-brand-pink/50 to-brand-pink/20" />
               {recruitmentSteps.map((step, i) => (
                 <motion.div
                   key={i}
                   {...fadeIn}
-                  transition={{ duration: 0.4, delay: 0.15 * i }}
+                  transition={{ duration: 0.4, delay: 0.1 * i }}
                   className="relative flex items-start gap-5"
                 >
-                  <span className="absolute -left-8 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-pink text-sm font-bold text-white">
+                  <span className="absolute -left-8 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-pink text-sm font-bold text-white shadow-[0_0_20px_rgba(224,3,113,0.3)]">
                     {i + 1}
                   </span>
                   <p className="leading-relaxed text-brand-grey">{step}</p>
@@ -138,34 +170,37 @@ export default function ServicesPage() {
             </div>
           </motion.div>
 
+          {/* Onboarding & Off-boarding */}
           <motion.div
             {...fadeUp}
             transition={{ duration: 0.6, ease, delay: 0.1 }}
-            className="grid gap-12 bg-brand-dark px-6 py-20 md:grid-cols-2 md:items-center md:gap-16"
+            className="grid gap-12 bg-brand-dark px-6 py-16 md:grid-cols-2 md:items-center md:gap-16"
           >
             <div className="flex items-center justify-center md:order-2">
-              <div className="flex h-32 w-32 items-center justify-center rounded-2xl bg-brand-pink/10">
-                <svg
-                  width="64"
-                  height="64"
-                  viewBox="0 0 64 64"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12 32h40M32 12v40"
-                    stroke="#e00371"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                  />
-                  <path
-                    d="M20 20l24 24M44 20L20 44"
-                    stroke="#e00371"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    opacity="0.4"
-                  />
-                </svg>
+              <div className="relative">
+                <div className="flex h-40 w-40 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-pink/20 to-brand-pink/5 border border-brand-pink/20">
+                  <svg
+                    width="72"
+                    height="72"
+                    viewBox="0 0 72 72"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M16 36h40M36 16v40"
+                      stroke="#e00371"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                    />
+                    <path
+                      d="M24 24l24 24M48 24L24 48"
+                      stroke="#e00371"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      opacity="0.4"
+                    />
+                  </svg>
+                </div>
               </div>
             </div>
             <div className="md:order-1">
@@ -178,32 +213,37 @@ export default function ServicesPage() {
                     key={i}
                     {...fadeIn}
                     transition={{ duration: 0.4, delay: 0.1 * i }}
-                    className="flex items-center gap-3 text-brand-grey"
+                    className="flex items-start gap-3 text-brand-grey"
                   >
-                    <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-brand-pink" />
-                    {item}
+                    <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-brand-pink mt-2" />
+                    <span className="leading-relaxed">{item}</span>
                   </motion.li>
                 ))}
               </ul>
             </div>
           </motion.div>
 
+          {/* Szkolenia */}
           <motion.div
             {...fadeUp}
             transition={{ duration: 0.6, ease, delay: 0.1 }}
-            className="bg-brand-black px-6 py-20"
+            className="bg-brand-black px-6 py-16"
           >
             <div className="grid gap-12 md:grid-cols-2 md:items-start md:gap-16">
               <div>
-                <div className="flex items-center gap-4">
-                  <h2 className="text-3xl font-bold text-white md:text-4xl">
-                    Szkolenia
-                  </h2>
-                  <span className="rounded-full bg-brand-pink px-4 py-1 text-xs font-semibold tracking-wider text-white uppercase">
-                    Wkrótce
+                <div className="flex items-center gap-4 mb-4">
+                  <p className="text-brand-pink text-sm font-semibold tracking-wider uppercase">Usługa C</p>
+                  <span className="rounded-full bg-brand-pink/20 border border-brand-pink/40 px-4 py-1 text-xs font-semibold tracking-wider text-brand-pink uppercase">
+                    Dalszy etap
                   </span>
                 </div>
-                <p className="mt-4 text-sm text-brand-grey">na dalszym etapie</p>
+                <h2 className="text-3xl font-bold text-white md:text-4xl">
+                  Szkolenia kompetencji menedżerskich
+                </h2>
+                <p className="mt-4 text-brand-grey">
+                  Rozwijamy umiejętności liderów i zespołów w obszarach kluczowych 
+                  dla efektywnego zarządzania w branży kulturalnej.
+                </p>
               </div>
               <ul className="space-y-4">
                 {trainingTopics.map((topic, i) => (
@@ -223,6 +263,56 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* Start Section */}
+      <section className="bg-brand-dark py-20">
+        <div className="mx-auto max-w-[1280px] px-6">
+          <motion.div
+            {...fadeUp}
+            className="rounded-2xl border border-brand-pink/20 bg-gradient-to-br from-brand-pink/10 to-transparent p-8 md:p-12"
+          >
+            <div className="grid gap-8 md:grid-cols-2 md:items-center">
+              <div>
+                <p className="text-brand-pink text-sm font-semibold tracking-wider uppercase mb-2">Usługa D</p>
+                <h2 className="text-3xl font-bold text-white md:text-4xl mb-4">
+                  Start działalności
+                </h2>
+                <div className="flex items-baseline gap-2 mb-6">
+                  <span className="text-5xl md:text-6xl font-bold text-brand-pink">01</span>
+                  <span className="text-5xl md:text-6xl font-bold text-white">.</span>
+                  <span className="text-5xl md:text-6xl font-bold text-white">2026</span>
+                </div>
+                <p className="text-brand-grey leading-relaxed">
+                  Konsultacje możliwe już teraz – skontaktuj się z naszym zespołem, 
+                  aby omówić Twoje potrzeby i zaplanować współpracę.
+                </p>
+              </div>
+              <div>
+                <p className="text-brand-grey/60 text-xs uppercase tracking-wider mb-4">Zespół HRup</p>
+                <div className="space-y-4">
+                  {teamMembers.map((member, i) => (
+                    <motion.div
+                      key={i}
+                      {...fadeIn}
+                      transition={{ duration: 0.4, delay: 0.1 * i }}
+                      className="flex items-center gap-4 rounded-xl bg-brand-black/50 p-4 border border-brand-grey/10"
+                    >
+                      <div className="w-12 h-12 rounded-full bg-brand-pink/10 flex items-center justify-center">
+                        <span className="text-brand-pink font-bold">{member.name[0]}</span>
+                      </div>
+                      <div>
+                        <p className="text-white font-semibold">{member.name}</p>
+                        <p className="text-brand-grey text-sm">{member.role}</p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
       <section className="bg-brand-black py-24">
         <motion.div
           {...fadeUp}
@@ -231,12 +321,23 @@ export default function ServicesPage() {
           <h2 className="text-3xl font-bold text-white md:text-5xl">
             Chcesz wiedzieć więcej?
           </h2>
-          <Link
-            to="/pakiety"
-            className="mt-10 inline-block rounded-full bg-brand-pink px-10 py-4 text-sm font-bold tracking-widest text-white uppercase transition-colors duration-300 hover:bg-brand-pink/80"
-          >
-            ZOBACZ PAKIETY
-          </Link>
+          <p className="mt-4 text-brand-grey max-w-lg">
+            Sprawdź nasze pakiety cenowe lub skontaktuj się bezpośrednio z zespołem.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 mt-10">
+            <Link
+              to="/pakiety"
+              className="inline-block rounded-full bg-brand-pink px-10 py-4 text-sm font-bold tracking-widest text-white uppercase transition-all duration-300 hover:bg-brand-pink/80 hover:shadow-[0_0_30px_rgba(224,3,113,0.3)]"
+            >
+              ZOBACZ PAKIETY
+            </Link>
+            <Link
+              to="/kontakt"
+              className="inline-block rounded-full border-2 border-brand-pink px-10 py-4 text-sm font-bold tracking-widest text-brand-pink uppercase transition-all duration-300 hover:bg-brand-pink hover:text-white"
+            >
+              KONTAKT
+            </Link>
+          </div>
         </motion.div>
       </section>
     </main>
