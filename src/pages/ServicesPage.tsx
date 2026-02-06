@@ -115,7 +115,7 @@ export default function ServicesPage() {
             className="grid gap-12 bg-brand-black px-6 py-16 md:grid-cols-2 md:items-center md:gap-16"
           >
             <div className="flex items-center justify-center md:order-2">
-              <img src="/onboard.png" alt="Onboarding" className="h-40 w-40 rounded-2xl object-cover" />
+              <img src="/onboard.png" alt="Onboarding" className="h-120 w-120 rounded-2xl object-cover" />
             </div>
             <div className="md:order-1">
               <h2 className="text-3xl font-bold text-white md:text-4xl">
