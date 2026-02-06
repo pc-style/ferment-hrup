@@ -83,14 +83,14 @@ export default function AboutPage() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="font-light leading-relaxed text-brand-grey"
               >
-                W ostatnich 4 latach{" "}
+                W ostatnich 4 latach kolektyw{" "}
                 <a 
                   href="https://ferment.com.pl/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-brand-pink font-medium hover:underline"
                 >
-                  Ferment Kolektiv
+                  Ferment
                 </a>{" "}
                 zwiększył swoje zatrudnienie ponadtrzykrotnie.
               </motion.p>
@@ -153,14 +153,14 @@ export default function AboutPage() {
                   3×
                 </p>
                 <p className="mt-3 text-lg font-light text-brand-grey">
-                  wzrost zatrudnienia w{" "}
+                  wzrost zatrudnienia w kolektywie{" "}
                   <a 
                     href="https://ferment.com.pl/" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="text-brand-pink hover:underline"
                   >
-                    Ferment Kolektiv
+                    Ferment
                   </a>
                 </p>
               </motion.div>
@@ -268,24 +268,24 @@ export default function AboutPage() {
               >
                 <img 
                   src="/logo.webp" 
-                  alt="Ferment Kolektiv" 
+                  alt="Ferment" 
                   className="h-16 w-auto"
                 />
               </a>
               <div>
                 <h3 className="text-2xl font-bold text-white mb-3">
-                  HRup to projekt{" "}
+                  HRup to część kolektywu{" "}
                   <a 
                     href="https://ferment.com.pl/" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="text-brand-pink hover:underline"
                   >
-                    Ferment Kolektiv
+                    Ferment
                   </a>
                 </h3>
                 <p className="text-brand-grey leading-relaxed">
-                  Ferment Kolektiv to zespół specjalistów wspierających instytucje kultury 
+                  Zespół specjalistów wspierających instytucje kultury 
                   i kina w Polsce. Od 2019 roku budujemy narzędzia i usługi, które pomagają 
                   tworzyć lepsze doświadczenia kulturalne dla wszystkich.
                 </p>
@@ -295,7 +295,7 @@ export default function AboutPage() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 mt-4 text-brand-pink text-sm font-medium hover:underline"
                 >
-                  Dowiedz się więcej o Ferment Kolektiv
+                  Dowiedz się więcej o Ferment
                   <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none">
                     <path d="M4 12l8-8M6 4h6v6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>

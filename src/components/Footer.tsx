@@ -4,7 +4,6 @@ const footerLinks = [
   { to: "/o-nas", label: "O nas" },
   { to: "/uslugi", label: "Usługi" },
   { to: "/pakiety", label: "Pakiety" },
-  { to: "/jak-dzialamy", label: "Jak działamy" },
   { to: "/faq", label: "FAQ" },
   { to: "/kontakt", label: "Kontakt" },
 ];
@@ -109,19 +108,19 @@ export default function Footer() {
             >
               <img
                 src="/logo.webp"
-                alt="Ferment Kolektiv"
+                alt="Ferment"
                 className="h-8 w-auto"
               />
             </a>
             <p className="text-brand-grey text-sm leading-relaxed">
-              HRup to projekt{" "}
+              HRup to część kolektywu{" "}
               <a
                 href="https://ferment.com.pl/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-brand-pink font-medium hover:underline"
               >
-                Ferment Kolektiv
+                Ferment
               </a>
             </p>
             <p className="text-brand-grey text-xs leading-relaxed">
@@ -137,14 +136,14 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} HRup. Wszelkie prawa zastrzeżone.
           </p>
           <p className="text-brand-grey text-xs flex items-center gap-2">
-            Projekt{" "}
+            Część kolektywu{" "}
             <a
               href="https://ferment.com.pl/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-brand-pink hover:underline"
             >
-              Ferment Kolektiv
+              Ferment
             </a>
           </p>
         </div>

@@ -52,7 +52,6 @@ const trainingTopics = [
 const teamMembers = [
   { name: "Asia", role: "HR & Rekrutacja" },
   { name: "Paulina", role: "Processes & Culture" },
-  { name: "Radek", role: "Strategy & Leadership" },
 ];
 
 export default function ServicesPage() {
@@ -78,102 +77,9 @@ export default function ServicesPage() {
       {/* Services Grid */}
       <section className="bg-brand-dark py-20">
         <div className="mx-auto max-w-[1280px] space-y-0">
-          {/* HR Strategiczny */}
-          <motion.div
-            {...fadeUp}
-            className="grid gap-12 bg-brand-dark px-6 py-16 md:grid-cols-2 md:items-center md:gap-16"
-          >
-            <div className="flex items-center justify-center md:order-2">
-              <div className="relative">
-                <div className="flex h-40 w-40 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-pink/20 to-brand-pink/5 border border-brand-pink/20">
-                  <svg
-                    width="72"
-                    height="72"
-                    viewBox="0 0 72 72"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect
-                      x="12"
-                      y="12"
-                      width="48"
-                      height="48"
-                      rx="8"
-                      stroke="#e00371"
-                      strokeWidth="2.5"
-                    />
-                    <circle cx="36" cy="30" r="8" stroke="#e00371" strokeWidth="2.5" />
-                    <path
-                      d="M20 54c0-8.837 7.163-16 16-16s16 7.163 16 16"
-                      stroke="#e00371"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                </div>
-                <div className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-brand-pink flex items-center justify-center text-white text-xs font-bold">
-                  a
-                </div>
-              </div>
-            </div>
-            <div className="md:order-1">
-              <p className="text-brand-pink text-sm font-semibold tracking-wider uppercase mb-2">Usługa A</p>
-              <h2 className="text-3xl font-bold text-white md:text-4xl">
-                HR Strategiczny na godziny
-              </h2>
-              <ul className="mt-6 space-y-4">
-                {strategicHRItems.map((item, i) => (
-                  <motion.li
-                    key={i}
-                    {...fadeIn}
-                    transition={{ duration: 0.4, delay: 0.1 * i }}
-                    className="flex items-start gap-3 text-brand-grey"
-                  >
-                    <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-brand-pink mt-2" />
-                    <span className="leading-relaxed">{item}</span>
-                  </motion.li>
-                ))}
-              </ul>
-            </div>
-          </motion.div>
-
-          {/* Rekrutacje */}
-          <motion.div
-            {...fadeUp}
-            transition={{ duration: 0.6, ease, delay: 0.1 }}
-            className="grid gap-12 bg-brand-black px-6 py-16 md:grid-cols-2 md:items-start md:gap-16"
-          >
-            <div>
-              <p className="text-brand-pink text-sm font-semibold tracking-wider uppercase mb-2">Usługa B</p>
-              <h2 className="text-3xl font-bold text-white md:text-4xl">
-                Rekrutacje na stanowiska funkcyjne
-              </h2>
-              <p className="mt-4 text-brand-grey">
-                Kompleksowy proces rekrutacji od A do Z.
-              </p>
-            </div>
-            <div className="relative space-y-6 pl-8">
-              <div className="absolute top-0 bottom-0 left-[15px] w-px bg-gradient-to-b from-brand-pink via-brand-pink/50 to-brand-pink/20" />
-              {recruitmentSteps.map((step, i) => (
-                <motion.div
-                  key={i}
-                  {...fadeIn}
-                  transition={{ duration: 0.4, delay: 0.1 * i }}
-                  className="relative flex items-start gap-5"
-                >
-                  <span className="absolute -left-8 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-pink text-sm font-bold text-white shadow-[0_0_20px_rgba(224,3,113,0.3)]">
-                    {i + 1}
-                  </span>
-                  <p className="leading-relaxed text-brand-grey">{step}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
           {/* Onboarding & Off-boarding */}
           <motion.div
             {...fadeUp}
-            transition={{ duration: 0.6, ease, delay: 0.1 }}
             className="grid gap-12 bg-brand-dark px-6 py-16 md:grid-cols-2 md:items-center md:gap-16"
           >
             <div className="flex items-center justify-center md:order-2">
@@ -223,20 +129,46 @@ export default function ServicesPage() {
             </div>
           </motion.div>
 
+          {/* Rekrutacje */}
+          <motion.div
+            {...fadeUp}
+            transition={{ duration: 0.6, ease, delay: 0.1 }}
+            className="grid gap-12 bg-brand-black px-6 py-16 md:grid-cols-2 md:items-start md:gap-16"
+          >
+            <div>
+              <h2 className="text-3xl font-bold text-white md:text-4xl">
+                Rekrutacje na stanowiska funkcyjne
+              </h2>
+              <p className="mt-4 text-brand-grey">
+                Kompleksowy proces rekrutacji od A do Z.
+              </p>
+            </div>
+            <div className="relative space-y-6 pl-8">
+              <div className="absolute top-0 bottom-0 left-[15px] w-px bg-gradient-to-b from-brand-pink via-brand-pink/50 to-brand-pink/20" />
+              {recruitmentSteps.map((step, i) => (
+                <motion.div
+                  key={i}
+                  {...fadeIn}
+                  transition={{ duration: 0.4, delay: 0.1 * i }}
+                  className="relative flex items-start gap-5"
+                >
+                  <span className="absolute -left-8 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-pink text-sm font-bold text-white shadow-[0_0_20px_rgba(224,3,113,0.3)]">
+                    {i + 1}
+                  </span>
+                  <p className="leading-relaxed text-brand-grey">{step}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
           {/* Szkolenia */}
           <motion.div
             {...fadeUp}
             transition={{ duration: 0.6, ease, delay: 0.1 }}
-            className="bg-brand-black px-6 py-16"
+            className="bg-brand-dark px-6 py-16"
           >
             <div className="grid gap-12 md:grid-cols-2 md:items-start md:gap-16">
               <div>
-                <div className="flex items-center gap-4 mb-4">
-                  <p className="text-brand-pink text-sm font-semibold tracking-wider uppercase">Usługa C</p>
-                  <span className="rounded-full bg-brand-pink/20 border border-brand-pink/40 px-4 py-1 text-xs font-semibold tracking-wider text-brand-pink uppercase">
-                    Dalszy etap
-                  </span>
-                </div>
                 <h2 className="text-3xl font-bold text-white md:text-4xl">
                   Szkolenia kompetencji menedżerskich
                 </h2>
@@ -260,6 +192,64 @@ export default function ServicesPage() {
               </ul>
             </div>
           </motion.div>
+
+          {/* HR Strategiczny */}
+          <motion.div
+            {...fadeUp}
+            className="grid gap-12 bg-brand-black px-6 py-16 md:grid-cols-2 md:items-center md:gap-16"
+          >
+            <div className="flex items-center justify-center md:order-2">
+              <div className="relative">
+                <div className="flex h-40 w-40 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-pink/20 to-brand-pink/5 border border-brand-pink/20">
+                  <svg
+                    width="72"
+                    height="72"
+                    viewBox="0 0 72 72"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect
+                      x="12"
+                      y="12"
+                      width="48"
+                      height="48"
+                      rx="8"
+                      stroke="#e00371"
+                      strokeWidth="2.5"
+                    />
+                    <circle cx="36" cy="30" r="8" stroke="#e00371" strokeWidth="2.5" />
+                    <path
+                      d="M20 54c0-8.837 7.163-16 16-16s16 7.163 16 16"
+                      stroke="#e00371"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div className="md:order-1">
+              <h2 className="text-3xl font-bold text-white md:text-4xl">
+                HR Strategiczny na godziny
+              </h2>
+              <span className="inline-block rounded-full bg-brand-pink/20 border border-brand-pink/40 px-4 py-1 text-xs font-semibold tracking-wider text-brand-pink uppercase mt-3">
+                Dalszy etap
+              </span>
+              <ul className="mt-6 space-y-4">
+                {strategicHRItems.map((item, i) => (
+                  <motion.li
+                    key={i}
+                    {...fadeIn}
+                    transition={{ duration: 0.4, delay: 0.1 * i }}
+                    className="flex items-start gap-3 text-brand-grey"
+                  >
+                    <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-brand-pink mt-2" />
+                    <span className="leading-relaxed">{item}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -272,12 +262,11 @@ export default function ServicesPage() {
           >
             <div className="grid gap-8 md:grid-cols-2 md:items-center">
               <div>
-                <p className="text-brand-pink text-sm font-semibold tracking-wider uppercase mb-2">Usługa D</p>
                 <h2 className="text-3xl font-bold text-white md:text-4xl mb-4">
                   Start działalności
                 </h2>
                 <div className="flex items-baseline gap-2 mb-6">
-                  <span className="text-5xl md:text-6xl font-bold text-brand-pink">01</span>
+                  <span className="text-5xl md:text-6xl font-bold text-brand-pink">06</span>
                   <span className="text-5xl md:text-6xl font-bold text-white">.</span>
                   <span className="text-5xl md:text-6xl font-bold text-white">2026</span>
                 </div>
@@ -309,6 +298,55 @@ export default function ServicesPage() {
               </div>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Harmonogram Section */}
+      <section className="bg-brand-dark py-20">
+        <div className="mx-auto max-w-[1280px] px-6">
+          <motion.h2
+            {...fadeUp}
+            className="mb-16 text-center text-3xl font-bold text-white md:text-4xl"
+          >
+            WIESZ CO CIĘ CZEKA<span className="text-brand-pink">.</span> PRZYKŁAD<span className="text-brand-pink">:</span>
+          </motion.h2>
+          <motion.p
+            {...fadeUp}
+            transition={{ duration: 0.6, ease, delay: 0.1 }}
+            className="mb-12 text-center text-brand-grey max-w-2xl mx-auto -mt-10"
+          >
+            Przykładowy harmonogram współpracy – pakiet HRup Frontline
+          </motion.p>
+
+          <div className="relative space-y-6 pl-8">
+            <div className="absolute top-0 bottom-0 left-[15px] w-px bg-gradient-to-b from-brand-pink via-brand-pink/50 to-brand-pink/20" />
+            {[
+              { step: 1, title: "Pierwszy kontakt", time: "45–60 min", desc: "Poznanie potrzeb i ustalenie zakresu współpracy" },
+              { step: 2, title: "Doprecyzowanie profilu stanowiska", time: "1–1,5 h", desc: "Ujednolicenie oczekiwań i kryteriów" },
+              { step: 3, title: "Publikacja ogłoszenia i preselekcja", time: "2–3 dni", desc: "Zebranie zgłoszeń i przygotowanie listy kandydatów" },
+              { step: 4, title: "Spotkania z kandydatami", time: "20–30 min / kandydat", desc: "Rekomendacje i przekazanie kandydatów do finalnej decyzji" },
+              { step: 5, title: "Finalizacja rekrutacji i oferta", time: "15–30 min", desc: "Zatrudnienie i ustalenie warunków pracy" },
+              { step: 6, title: "Wdrożenie i onboarding", time: "14 dni checklista", desc: "Szybkie wdrożenie nowego pracownika (opcjonalnie)" },
+            ].map((item, i) => (
+              <motion.div
+                key={item.step}
+                {...fadeIn}
+                transition={{ duration: 0.4, delay: 0.1 * i }}
+                className="relative flex items-start gap-5"
+              >
+                <span className="absolute -left-8 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-pink text-sm font-bold text-white shadow-[0_0_20px_rgba(224,3,113,0.3)]">
+                  {item.step}
+                </span>
+                <div>
+                  <div className="flex items-center gap-3 mb-1">
+                    <p className="font-semibold text-white">{item.title}</p>
+                    <span className="text-xs text-brand-pink">{item.time}</span>
+                  </div>
+                  <p className="text-brand-grey text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 

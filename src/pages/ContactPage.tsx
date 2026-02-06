@@ -16,7 +16,6 @@ const packages = [
 const team = [
   { name: "Asia", role: "HR & Rekrutacja" },
   { name: "Paulina", role: "Processes & Culture" },
-  { name: "Radek", role: "Strategy & Leadership" },
 ]
 
 const inputClasses =
@@ -62,7 +61,7 @@ export default function ContactPage() {
             </h2>
             <div className="flex items-baseline gap-2 mb-6">
               <span className="text-brand-grey text-sm">Start współpracy od:</span>
-              <span className="text-2xl font-bold text-white">01<span className="text-brand-pink">.</span>2026</span>
+              <span className="text-2xl font-bold text-white">06<span className="text-brand-pink">.</span>2026</span>
             </div>
             <p className="mb-8 text-brand-grey">
               Konsultacje możliwe już teraz – skontaktuj się z naszym zespołem.
@@ -220,21 +219,21 @@ export default function ContactPage() {
             >
               <img 
                 src="/logo.webp" 
-                alt="Ferment Kolektiv" 
+                alt="Ferment" 
                 className="h-10 w-auto"
               />
             </a>
             <div className="h-8 w-px bg-brand-grey/30 hidden md:block" />
             <div>
               <p className="text-white font-medium">
-                HRup to projekt{" "}
+                HRup to część kolektywu{" "}
                 <a 
                   href="https://ferment.com.pl/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-brand-pink hover:underline"
                 >
-                  Ferment Kolektiv
+                  Ferment
                 </a>
               </p>
             </div>

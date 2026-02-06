@@ -4,7 +4,6 @@ import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
 import ServicesPage from './pages/ServicesPage'
 import PackagesPage from './pages/PackagesPage'
-import HowWeWorkPage from './pages/HowWeWorkPage'
 import FaqPage from './pages/FaqPage'
 import ContactPage from './pages/ContactPage'
 
@@ -17,7 +16,6 @@ const router = createBrowserRouter([
       { path: 'o-nas', element: <AboutPage /> },
       { path: 'uslugi', element: <ServicesPage /> },
       { path: 'pakiety', element: <PackagesPage /> },
-      { path: 'jak-dzialamy', element: <HowWeWorkPage /> },
       { path: 'faq', element: <FaqPage /> },
       { path: 'kontakt', element: <ContactPage /> },
     ],

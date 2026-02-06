@@ -6,7 +6,6 @@ const navLinks = [
   { to: "/o-nas", label: "O nas" },
   { to: "/uslugi", label: "Usługi" },
   { to: "/pakiety", label: "Pakiety" },
-  { to: "/jak-dzialamy", label: "Jak działamy" },
   { to: "/faq", label: "FAQ" },
   { to: "/kontakt", label: "Kontakt" },
 ];
