@@ -3,14 +3,13 @@ import { motion } from "motion/react";
 
 const services = [
   {
-    title: "HR Strategiczny",
+    title: "Onboarding",
     description:
-      "Projektowanie struktury organizacji, monitorowanie parametrów zaangażowania i budowanie kultury organizacyjnej.",
+      "Mapowanie kompetencji, checklisty wdrożeniowe, monitoring i wsparcie przez pierwsze 30-60 dni.",
     icon: (
       <svg viewBox="0 0 48 48" className="w-10 h-10">
         <circle cx="24" cy="24" r="20" stroke="#e00371" strokeWidth="2" fill="none" />
-        <circle cx="24" cy="18" r="6" fill="#e00371" />
-        <path d="M12 38c0-6.627 5.373-12 12-12s12 5.373 12 12" stroke="#e00371" strokeWidth="2" fill="none" />
+        <path d="M24 14v10l7 4" stroke="#e00371" strokeWidth="2" strokeLinecap="round" />
       </svg>
     ),
   },
@@ -26,26 +25,15 @@ const services = [
     ),
   },
   {
-    title: "Onboarding",
-    description:
-      "Mapowanie kompetencji, checklisty wdrożeniowe, monitoring i wsparcie przez pierwsze 30-60 dni.",
-    icon: (
-      <svg viewBox="0 0 48 48" className="w-10 h-10">
-        <circle cx="24" cy="24" r="20" stroke="#e00371" strokeWidth="2" fill="none" />
-        <path d="M24 14v10l7 4" stroke="#e00371" strokeWidth="2" strokeLinecap="round" />
-      </svg>
-    ),
-  },
-  {
     title: "Wsparcie zespołów",
     description:
       "Audyt komunikacji, klarowność ról, warsztaty dla liderów i poprawa współpracy w zespole.",
     icon: (
       <svg viewBox="0 0 48 48" className="w-10 h-10">
         <circle cx="24" cy="24" r="20" stroke="#e00371" strokeWidth="2" fill="none" />
-        <circle cx="18" cy="20" r="4" fill="#e00371" />
-        <circle cx="30" cy="20" r="4" fill="#e00371" />
-        <path d="M10 36c0-5 4-9 8-9h12c4 0 8 4 8 9" stroke="#e00371" strokeWidth="2" fill="none" />
+        <circle cx="17" cy="20" r="2" fill="#e00371" />
+        <circle cx="31" cy="20" r="2" fill="#e00371" />
+        <path d="M16 30c2 4 6 6 8 6s6-2 8-6" stroke="#e00371" strokeWidth="2" fill="none" strokeLinecap="round" />
       </svg>
     ),
   },
@@ -57,6 +45,18 @@ const services = [
       <svg viewBox="0 0 48 48" className="w-10 h-10">
         <circle cx="24" cy="24" r="20" stroke="#e00371" strokeWidth="2" fill="none" />
         <path d="M24 14l3 6 7 1-5 5 1.2 7-6.2-3.3L17.8 33 19 26l-5-5 7-1z" fill="#e00371" />
+      </svg>
+    ),
+  },
+  {
+    title: "HR Strategiczny",
+    description:
+      "Projektowanie struktury organizacji, monitorowanie parametrów zaangażowania i budowanie kultury organizacyjnej.",
+    icon: (
+      <svg viewBox="0 0 48 48" className="w-10 h-10">
+        <circle cx="24" cy="24" r="20" stroke="#e00371" strokeWidth="2" fill="none" />
+        <circle cx="24" cy="18" r="6" fill="#e00371" />
+        <path d="M12 38c0-6.627 5.373-12 12-12s12 5.373 12 12" stroke="#e00371" strokeWidth="2" fill="none" />
       </svg>
     ),
   },
@@ -112,15 +112,6 @@ export default function HomePage() {
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
           >
             Twój zespół. Nasza troska.
-          </motion.p>
-
-          <motion.p
-            className="font-poppins text-base md:text-lg text-brand-grey mt-4 max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut", delay: 0.4 }}
-          >
-            Tam, gdzie kultura spotyka ludzi.
           </motion.p>
 
           <motion.div
@@ -182,7 +173,7 @@ export default function HomePage() {
               transition={{ duration: 0.6 }}
             >
               <h2 className="font-poppins font-bold text-3xl md:text-4xl text-white mb-6">
-                <span className="text-brand-pink">dla</span> MISJI
+                WIZJA
               </h2>
               <p className="font-poppins font-light text-brand-grey text-base md:text-lg leading-relaxed">
                 Wspieramy instytucje kultury i kina w skutecznym pozyskiwaniu,
@@ -198,7 +189,7 @@ export default function HomePage() {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <h2 className="font-poppins font-bold text-3xl md:text-4xl text-white mb-6">
-                <span className="text-brand-pink">dla</span> WIZJI
+                WIZJA
               </h2>
               <p className="font-poppins font-light text-brand-grey text-base md:text-lg leading-relaxed">
                 Chcemy, aby każda instytucja kultury miała prosty, efektywny i
@@ -344,7 +335,7 @@ export default function HomePage() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            01<span className="text-brand-pink">.</span>2026
+            06<span className="text-brand-pink">.</span>2026
           </motion.h2>
 
           <motion.p
@@ -367,8 +358,6 @@ export default function HomePage() {
             <span className="text-brand-pink font-medium">Asia</span>
             <span className="text-brand-grey">•</span>
             <span className="text-brand-pink font-medium">Paulina</span>
-            <span className="text-brand-grey">•</span>
-            <span className="text-brand-pink font-medium">Radek</span>
           </motion.div>
 
           <motion.div
