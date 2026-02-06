@@ -25,7 +25,7 @@ export default function ContactPage() {
   const [sent, setSent] = useState(false)
 
   return (
-    <main className="font-poppins">
+    <main className="font-montserrat">
       {/* Hero Section */}
       <section className="flex min-h-[40vh] flex-col items-center justify-center bg-brand-black px-6 pt-8 text-center">
         <motion.p

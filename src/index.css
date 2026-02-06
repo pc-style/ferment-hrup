@@ -7,7 +7,7 @@
   --color-brand-grey: #717173;
   --color-brand-white: #ffffff;
 
-  --font-poppins: "Montserrat", sans-serif;
+  --font-montserrat: "Montserrat", sans-serif;
 }
 
 html {
@@ -15,7 +15,7 @@ html {
 }
 
 body {
-  font-family: var(--font-poppins);
+  font-family: var(--font-montserrat);
   background-color: var(--color-brand-black);
   color: var(--color-brand-white);
   -webkit-font-smoothing: antialiased;

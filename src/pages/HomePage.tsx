@@ -88,7 +88,7 @@ export default function HomePage() {
           />
 
           <motion.p
-            className="font-poppins text-sm tracking-[0.3em] text-brand-grey uppercase mb-4"
+            className="font-montserrat text-sm tracking-[0.3em] text-brand-grey uppercase mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
@@ -97,7 +97,7 @@ export default function HomePage() {
           </motion.p>
 
           <motion.h1
-            className="font-poppins font-bold text-5xl md:text-7xl lg:text-8xl text-white tracking-tight leading-none"
+            className="font-montserrat font-bold text-5xl md:text-7xl lg:text-8xl text-white tracking-tight leading-none"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
@@ -106,7 +106,7 @@ export default function HomePage() {
           </motion.h1>
 
           <motion.p
-            className="font-poppins text-xl md:text-2xl text-white mt-6"
+            className="font-montserrat text-xl md:text-2xl text-white mt-6"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
@@ -122,7 +122,7 @@ export default function HomePage() {
           >
             <Link
               to="/kontakt"
-              className="inline-block bg-brand-pink text-white font-poppins font-semibold text-sm tracking-widest px-10 py-4 rounded-full hover:bg-brand-pink/90 hover:shadow-[0_0_30px_rgba(224,3,113,0.3)] transition-all duration-300"
+              className="inline-block bg-brand-pink text-white font-montserrat font-semibold text-sm tracking-widest px-10 py-4 rounded-full hover:bg-brand-pink/90 hover:shadow-[0_0_30px_rgba(224,3,113,0.3)] transition-all duration-300"
             >
               POROZMAWIAJMY
             </Link>
@@ -172,10 +172,10 @@ export default function HomePage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="font-poppins font-bold text-3xl md:text-4xl text-white mb-6">
+              <h2 className="font-montserrat font-bold text-3xl md:text-4xl text-white mb-6">
                 MISJA
               </h2>
-              <p className="font-poppins font-light text-brand-grey text-base md:text-lg leading-relaxed">
+              <p className="font-montserrat font-light text-brand-grey text-base md:text-lg leading-relaxed">
                 Wspieramy instytucje kultury i kina w skutecznym pozyskiwaniu,
                 wdrażaniu i utrzymywaniu najlepszych pracowników, zapewniając
                 procesy HR dopasowane do realiów branży.
@@ -188,10 +188,10 @@ export default function HomePage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <h2 className="font-poppins font-bold text-3xl md:text-4xl text-white mb-6">
+              <h2 className="font-montserrat font-bold text-3xl md:text-4xl text-white mb-6">
                 WIZJA
               </h2>
-              <p className="font-poppins font-light text-brand-grey text-base md:text-lg leading-relaxed">
+              <p className="font-montserrat font-light text-brand-grey text-base md:text-lg leading-relaxed">
                 Chcemy, aby każda instytucja kultury miała prosty, efektywny i
                 powtarzalny system HR, który pozwala koncentrować się na
                 tworzeniu kultury, a nie na zarządzaniu rotacją i chaosem
@@ -206,7 +206,7 @@ export default function HomePage() {
       <section className="bg-brand-black py-24 md:py-32">
         <div className="max-w-[1280px] mx-auto px-6">
           <motion.h2
-            className="font-poppins font-bold text-3xl md:text-4xl text-white mb-6 text-center"
+            className="font-montserrat font-bold text-3xl md:text-4xl text-white mb-6 text-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -215,7 +215,7 @@ export default function HomePage() {
             <span className="text-brand-pink">dla</span> TWOJEJ ORGANIZACJI
           </motion.h2>
           <motion.p
-            className="font-poppins text-brand-grey text-center max-w-2xl mx-auto mb-16"
+            className="font-montserrat text-brand-grey text-center max-w-2xl mx-auto mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -237,10 +237,10 @@ export default function HomePage() {
                 whileHover={{ y: -4 }}
               >
                 <div className="mb-6 opacity-80 group-hover:opacity-100 transition-opacity duration-300">{service.icon}</div>
-                <h3 className="font-poppins font-semibold text-xl text-white mb-3">
+                <h3 className="font-montserrat font-semibold text-xl text-white mb-3">
                   {service.title}
                 </h3>
-                <p className="font-poppins font-light text-brand-grey text-sm leading-relaxed">
+                <p className="font-montserrat font-light text-brand-grey text-sm leading-relaxed">
                   {service.description}
                 </p>
               </motion.div>
@@ -256,7 +256,7 @@ export default function HomePage() {
           >
             <Link
               to="/uslugi"
-              className="inline-block border-2 border-brand-pink text-brand-pink font-poppins font-semibold text-sm tracking-widest px-8 py-3 rounded-full hover:bg-brand-pink hover:text-white transition-all duration-300"
+              className="inline-block border-2 border-brand-pink text-brand-pink font-montserrat font-semibold text-sm tracking-widest px-8 py-3 rounded-full hover:bg-brand-pink hover:text-white transition-all duration-300"
             >
               ZOBACZ WSZYSTKIE USŁUGI
             </Link>
@@ -268,7 +268,7 @@ export default function HomePage() {
       <section className="bg-brand-dark py-24 md:py-32">
         <div className="max-w-[1280px] mx-auto px-6">
           <motion.h2
-            className="font-poppins font-bold text-3xl md:text-4xl text-white mb-16"
+            className="font-montserrat font-bold text-3xl md:text-4xl text-white mb-16"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -288,7 +288,7 @@ export default function HomePage() {
                   transition={{ duration: 0.5, delay: i * 0.1 }}
                   className="border-l-2 border-brand-pink py-3 pl-6 hover:bg-brand-black/30 transition-colors duration-200"
                 >
-                  <p className="font-poppins text-lg text-brand-grey hover:text-white transition-colors duration-200">{client}</p>
+                  <p className="font-montserrat text-lg text-brand-grey hover:text-white transition-colors duration-200">{client}</p>
                 </motion.div>
               ))}
             </div>
@@ -299,7 +299,7 @@ export default function HomePage() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="flex items-center"
             >
-              <p className="font-poppins text-lg md:text-xl leading-relaxed text-white">
+              <p className="font-montserrat text-lg md:text-xl leading-relaxed text-white">
                 Znamy realia pracy w kulturze: wielozadaniowość, ograniczone
                 budżety, sezonowość, presję i pasję. Dlatego nasze rozwiązania 
                 są dopasowane do specyfiki branży.
@@ -319,7 +319,7 @@ export default function HomePage() {
       >
         <div className="max-w-[1280px] mx-auto px-6 text-center">
           <motion.p
-            className="font-poppins text-brand-grey text-sm tracking-widest uppercase mb-4"
+            className="font-montserrat text-brand-grey text-sm tracking-widest uppercase mb-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -329,7 +329,7 @@ export default function HomePage() {
           </motion.p>
 
           <motion.h2
-            className="font-poppins font-bold text-5xl md:text-7xl text-white mb-6"
+            className="font-montserrat font-bold text-5xl md:text-7xl text-white mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -339,7 +339,7 @@ export default function HomePage() {
           </motion.h2>
 
           <motion.p
-            className="font-poppins text-brand-grey text-lg mb-4"
+            className="font-montserrat text-brand-grey text-lg mb-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -368,7 +368,7 @@ export default function HomePage() {
           >
             <Link
               to="/kontakt"
-              className="inline-block bg-brand-pink text-white font-poppins font-semibold text-sm tracking-widest px-10 py-4 rounded-full hover:bg-brand-pink/90 hover:shadow-[0_0_30px_rgba(224,3,113,0.3)] transition-all duration-300"
+              className="inline-block bg-brand-pink text-white font-montserrat font-semibold text-sm tracking-widest px-10 py-4 rounded-full hover:bg-brand-pink/90 hover:shadow-[0_0_30px_rgba(224,3,113,0.3)] transition-all duration-300"
             >
               POROZMAWIAJMY
             </Link>
