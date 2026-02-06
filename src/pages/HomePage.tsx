@@ -335,7 +335,7 @@ export default function HomePage() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            06<span className="text-brand-pink">.</span>2026
+            <span className="text-brand-pink">06</span>.2026
           </motion.h2>
 
           <motion.p
