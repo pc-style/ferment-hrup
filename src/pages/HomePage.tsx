@@ -88,7 +88,7 @@ export default function HomePage() {
           />
 
           <motion.p
-            className="font-montserrat text-sm tracking-[0.3em] text-brand-grey uppercase mb-4"
+            className="font-montserrat text-sm tracking-[0.3em] text-brand-white uppercase mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
