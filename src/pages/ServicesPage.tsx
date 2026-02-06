@@ -90,16 +90,16 @@ export default function ServicesPage() {
                 Kompleksowy proces rekrutacji od A do Z.
               </p>
             </div>
-            <div className="relative space-y-6 pl-8">
-              <div className="absolute top-0 bottom-0 left-[15px] w-px bg-gradient-to-b from-brand-pink via-brand-pink/50 to-brand-pink/20" />
+            <div className="relative space-y-6 pl-12">
+              <div className="absolute top-0 bottom-0 left-[19px] w-px bg-gradient-to-b from-brand-pink via-brand-pink/50 to-brand-pink/20" />
               {recruitmentSteps.map((step, i) => (
                 <motion.div
                   key={i}
                   {...fadeIn}
                   transition={{ duration: 0.4, delay: 0.1 * i }}
-                  className="relative flex items-start gap-5"
+                  className="relative flex items-start"
                 >
-                  <span className="absolute -left-8 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-pink text-sm font-bold text-white shadow-[0_0_20px_rgba(224,3,113,0.3)]">
+                  <span className="absolute -left-12 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-pink text-sm font-bold text-white shadow-[0_0_20px_rgba(224,3,113,0.3)]">
                     {i + 1}
                   </span>
                   <p className="leading-relaxed text-brand-grey">{step}</p>
@@ -115,7 +115,14 @@ export default function ServicesPage() {
             className="grid gap-12 bg-brand-black px-6 py-16 md:grid-cols-2 md:items-center md:gap-16"
           >
             <div className="flex items-center justify-center md:order-2">
-              <img src="/onboard.png" alt="Onboarding" className="h-120 w-120 rounded-2xl object-cover" />
+              <div className="flex h-40 w-40 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-pink/20 to-brand-pink/5 border border-brand-pink/20">
+                <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="18" y="10" width="36" height="48" rx="4" stroke="#e00371" strokeWidth="2.5" />
+                  <path d="M30 8h12a2 2 0 0 1 2 2v4H28v-4a2 2 0 0 1 2-2z" stroke="#e00371" strokeWidth="2.5" />
+                  <path d="M28 34l5 5 11-11" stroke="#e00371" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M26 46h20M26 52h14" stroke="#e00371" strokeWidth="2" strokeLinecap="round" opacity="0.4" />
+                </svg>
+              </div>
             </div>
             <div className="md:order-1">
               <h2 className="text-3xl font-bold text-white md:text-4xl">
