@@ -1,0 +1,520 @@
+---
+import Base from "../layouts/Base.astro";
+
+interface MainPackage {
+  name: string;
+  price: string;
+  time: string;
+  description: string;
+  items: string[];
+  note?: string;
+  bonus?: string;
+  target: string;
+  featured: boolean;
+  badge?: string;
+}
+
+const frontlinePackages: MainPackage[] = [
+  {
+    name: "HRup Template",
+    price: "2 000 zł",
+    time: "2-3 tygodnie",
+    description: "Gotowy szablon dla stanowisk niespecjalistycznych",
+    items: [
+      "konsultacja potrzeb",
+      "wzór ogłoszenia rekrutacyjnego",
+      "pytania kwalifikacyjne",
+      "checklist preselekcji",
+      "checklist onboardingu",
+    ],
+    note: "Po stronie klienta: całość procesu rekrutacji",
+    target: "Juniors / Frontline",
+    featured: false,
+  },
+  {
+    name: "HRup START",
+    price: "3 500 – 4 500 zł",
+    time: "4-5 tygodni",
+    description: "Dla małych zespołów lub ograniczonego budżetu",
+    items: [
+      "konsultacja potrzeb",
+      "doprecyzowanie profilu stanowiska",
+      "publikacja ogłoszenia",
+      "preselekcja CV",
+      "3-5 rekomendowanych kandydatów",
+    ],
+    note: "Rozmowy po stronie klienta",
+    target: "Frontline, Marketing, Ops",
+    featured: false,
+  },
+  {
+    name: "HRup CORE",
+    price: "6 000 – 7 500 zł",
+    time: "5-7 tygodni",
+    description: "Najczęściej wybierany pakiet",
+    items: [
+      "pełny brief rekrutacyjny",
+      "ogłoszenia + aktywny sourcing",
+      "rozmowy rekrutacyjne HRup",
+      "dopasowanie do realiów pracy w kulturze",
+      "wsparcie przy decyzji końcowej",
+      "3-5 kandydatów + komentarz",
+    ],
+    bonus: "rekomendacja onboardingowa",
+    target: "Kierownicy, Specjaliści",
+    featured: true,
+    badge: "Najczęściej wybierany",
+  },
+  {
+    name: "HRup PRO",
+    price: "8 500 – 10 000 zł",
+    time: "6-8 tygodni",
+    description: "Rekrutacja + ochrona przed rotacją",
+    items: [
+      "wszystko z pakietu CORE",
+      "diagnoza ryzyk organizacyjnych",
+      "wsparcie lidera",
+      "onboarding 30 dni",
+      "2-4 kandydatów + negocjacje",
+    ],
+    bonus: "check-in po 30 dniach",
+    target: "Liderzy, Kluczowe role",
+    featured: false,
+  },
+];
+
+const talentPackages: MainPackage[] = [
+  {
+    name: "HRup Talent START",
+    price: "6 000 zł",
+    time: "5-6 tygodni",
+    description: "Profil specjalistyczny z preselekcją",
+    items: [
+      "konsultacja wymagań specjalistycznych",
+      "stworzenie profilu specjalistycznego",
+      "publikacja ogłoszenia",
+      "preselekcja kandydatów",
+      "wstępne rekomendacje",
+    ],
+    target: "Specjaliści, Eksperci",
+    featured: false,
+  },
+  {
+    name: "HRup Talent CORE",
+    price: "7 000 zł",
+    time: "6-7 tygodni",
+    description: "Pełny sourcing i rozmowy kompetencyjne",
+    items: [
+      "wszystko z Talent START",
+      "aktywny sourcing",
+      "rozmowy kompetencyjne HRup",
+      "szczegółowa analiza kandydatów",
+      "dopasowanie kulturowe",
+    ],
+    target: "Kluczowi specjaliści",
+    featured: true,
+    badge: "Rekomendowany",
+  },
+  {
+    name: "HRup Talent PRO",
+    price: "8 500 zł",
+    time: "7-8 tygodni",
+    description: "Z wsparciem onboardingowym",
+    items: [
+      "wszystko z Talent CORE",
+      "onboarding 30 dni",
+      "monitoring wdrożenia",
+      "check-in z pracownikiem i liderem",
+      "wsparcie w adaptacji",
+    ],
+    bonus: "gwarancja 3 miesiące",
+    target: "Kluczowe stanowiska",
+    featured: false,
+  },
+];
+
+const leaderPackages: MainPackage[] = [
+  {
+    name: "HRup Leader CORE",
+    price: "8 500 zł",
+    time: "6-8 tygodni",
+    description: "Rekrutacja na stanowiska kierownicze",
+    items: [
+      "pogłębiony profil lidera",
+      "aktywny sourcing w sieci kontaktów",
+      "rozmowy kompetencyjne i menedżerskie",
+      "assessment dopasowania do zespołu",
+      "szczegółowa rekomendacja",
+    ],
+    target: "Kierownicy, Dyrektorzy",
+    featured: true,
+    badge: "Dla liderów",
+  },
+  {
+    name: "HRup Leader PRO",
+    price: "10 000 zł",
+    time: "7-9 tygodni",
+    description: "Pełne wsparcie z onboardingiem lidera",
+    items: [
+      "wszystko z Leader CORE",
+      "onboarding lidera 30 dni",
+      "wsparcie w budowaniu autorytetu",
+      "check-in z zespołem",
+      "monitoring adaptacji",
+    ],
+    bonus: "check-in po 60 dniach",
+    target: "Kluczowe role przywódcze",
+    featured: false,
+  },
+];
+
+const additionalPackages = [
+  {
+    name: "HRup Onboard",
+    price: "2 500 zł",
+    description: "Mini-onboarding: checklisty, instrukcje, monitoring 30-60 dni",
+    icon: `<path d="M8 16l6 6 10-12" stroke="#e00371" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="4" y="4" width="24" height="24" rx="4" stroke="#e00371" stroke-width="2"/>`,
+  },
+  {
+    name: "HRup Team",
+    price: "3 500 zł",
+    description: "Audyt komunikacji w zespole, rozpisanie ról, warsztaty dla liderów",
+    icon: `<circle cx="10" cy="12" r="4" stroke="#e00371" stroke-width="2"/><circle cx="22" cy="12" r="4" stroke="#e00371" stroke-width="2"/><path d="M4 26c0-4 4-7 6-7h4c2 0 6 3 6 7M18 26c0-4 4-7 6-7h2c2 0 6 3 6 7" stroke="#e00371" stroke-width="2" stroke-linecap="round"/>`,
+  },
+  {
+    name: "HRup Culture",
+    price: "3 000 zł",
+    description:
+      "Analiza procesów HR, rekomendacje, wsparcie liderów, wdrożenie powtarzalnych procesów",
+    icon: `<path d="M16 6l3 6 7 1-5 5 1.2 6.5L16 21.5l-6.2 3L11 18l-5-5 7-1z" stroke="#e00371" stroke-width="2" stroke-linejoin="round"/>`,
+  },
+  {
+    name: "HRup FAST",
+    price: "+30% do pakietu",
+    description:
+      'Tryb pilny "na wczoraj" – skrócony proces, priorytetowy sourcing, szybka rekomendacja',
+    icon: `<path d="M16 4v12l8 4" stroke="#e00371" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="16" r="12" stroke="#e00371" stroke-width="2"/>`,
+  },
+];
+
+const categories = [
+  {
+    id: "frontline",
+    label: "Frontline",
+    sublabel: "Stanowiska podstawowe",
+    packages: frontlinePackages,
+  },
+  {
+    id: "talent",
+    label: "Talent",
+    sublabel: "Specjaliści",
+    packages: talentPackages,
+  },
+  {
+    id: "leader",
+    label: "Leader",
+    sublabel: "Stanowiska kierownicze",
+    packages: leaderPackages,
+  },
+];
+---
+
+<Base title="Pakiety | HRup - ludzie z kulturą">
+  <!-- Hero -->
+  <section
+    class="relative flex min-h-[44vh] flex-col items-center justify-center overflow-hidden bg-brand-black px-6 pt-8"
+  >
+    <div
+      class="pointer-events-none absolute inset-0"
+      style="background: radial-gradient(ellipse 70% 55% at 50% -10%, rgba(224,3,113,0.12), transparent 70%);"
+    >
+    </div>
+    <div class="line-reveal relative">
+      <p class="mb-4 text-sm tracking-[0.3em] text-brand-grey uppercase">
+        Pakiety rekrutacyjne
+      </p>
+    </div>
+    <h1
+      class="relative text-center text-5xl font-bold tracking-tight md:text-7xl"
+    >
+      <span class="line-reveal" style="--line-delay: 0.15s">
+        <span><span class="text-brand-pink">dla</span> DOPASOWANIA</span>
+      </span>
+    </h1>
+    <div class="line-reveal relative" style="--line-delay: 0.3s">
+      <p class="mt-6 max-w-2xl text-center leading-relaxed text-brand-grey">
+        Wybierz pakiet dopasowany do Twoich potrzeb. Od szablonów dla stanowisk
+        podstawowych, przez kompleksowe rekrutacje specjalistów, po poszukiwanie
+        liderów.
+      </p>
+    </div>
+  </section>
+
+  <!-- Category tabs -->
+  <section class="bg-brand-black px-6 py-12" id="packages-tabs">
+    <div class="mx-auto max-w-[1280px]">
+      <div class="flex flex-wrap justify-center gap-4" data-reveal>
+        {
+          categories.map((cat, i) => (
+            <button
+              type="button"
+              data-tab={cat.id}
+              aria-selected={i === 0 ? "true" : "false"}
+              class:list={[
+                "tab-button group relative rounded-xl px-8 py-4 text-left transition-all duration-300",
+                i === 0
+                  ? "bg-brand-pink text-white shadow-[0_0_30px_rgba(224,3,113,0.25)]"
+                  : "border border-brand-grey/20 bg-brand-dark text-white hover:border-brand-pink/50",
+              ]}
+            >
+              <p class="text-lg font-bold">{cat.label}</p>
+              <p
+                class:list={[
+                  "mt-0.5 text-xs",
+                  i === 0 ? "text-white/80" : "text-brand-grey",
+                ]}
+              >
+                {cat.sublabel}
+              </p>
+            </button>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Packages grids -->
+  <section class="bg-brand-dark px-6 py-16">
+    {
+      categories.map((cat, catIndex) => (
+        <div
+          data-panel={cat.id}
+          hidden={catIndex !== 0}
+          class:list={[
+            "tab-panel mx-auto grid max-w-[1280px] gap-6",
+            cat.packages.length <= 3
+              ? "md:grid-cols-2 lg:grid-cols-3"
+              : "md:grid-cols-2 lg:grid-cols-4",
+          ]}
+        >
+          {cat.packages.map((pkg) => (
+            <div
+              class:list={[
+                "spotlight relative flex flex-col rounded-xl p-6 transition-all duration-300 hover:-translate-y-1",
+                pkg.featured
+                  ? "border-2 border-brand-pink bg-gradient-to-b from-brand-pink/5 to-transparent shadow-[0_0_40px_rgba(224,3,113,0.15)]"
+                  : "border border-brand-grey/20 bg-brand-black/50 hover:border-brand-pink/50",
+              ]}
+            >
+              {pkg.featured && pkg.badge && (
+                <span class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-brand-pink px-4 py-1 text-xs font-semibold whitespace-nowrap text-white">
+                  {pkg.badge}
+                </span>
+              )}
+
+              <div class="mb-4">
+                <h3 class="text-lg font-bold text-white">{pkg.name}</h3>
+                <p class="mt-2 text-2xl font-bold text-brand-pink">{pkg.price}</p>
+                <p class="text-xs text-brand-grey">netto</p>
+              </div>
+
+              <div class="mb-4 flex items-center gap-2">
+                <svg class="h-4 w-4 text-brand-pink/60" viewBox="0 0 16 16" fill="none">
+                  <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5" />
+                  <path d="M8 4v4l3 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                </svg>
+                <span class="text-xs text-brand-grey">{pkg.time}</span>
+              </div>
+
+              <p class="mb-4 text-sm leading-relaxed text-brand-grey">
+                {pkg.description}
+              </p>
+
+              <ul class="mb-4 flex-1 space-y-2">
+                {pkg.items.map((item) => (
+                  <li class="flex items-start gap-2 text-sm text-white/80">
+                    <span class="mt-1.5 block h-1.5 w-1.5 shrink-0 rounded-full bg-brand-pink" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+
+              {pkg.bonus && (
+                <p class="border-t border-brand-grey/20 pt-3 text-xs text-brand-pink">
+                  + {pkg.bonus}
+                </p>
+              )}
+
+              {pkg.note && (
+                <p class="border-t border-brand-grey/20 pt-3 text-xs text-brand-grey italic">
+                  {pkg.note}
+                </p>
+              )}
+
+              <div class="mt-4 border-t border-brand-grey/10 pt-3">
+                <p class="text-xs text-brand-grey">
+                  <span class="text-white/60">Dla:</span> {pkg.target}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      ))
+    }
+  </section>
+
+  <!-- Additional services -->
+  <section class="bg-brand-black px-6 py-20">
+    <div class="mx-auto max-w-[1280px]">
+      <h2
+        class="mb-4 text-center text-3xl font-bold md:text-4xl"
+        data-reveal
+      >
+        Dodatkowe usługi
+      </h2>
+      <p
+        class="mx-auto mb-12 max-w-xl text-center text-brand-grey"
+        data-reveal
+        style="--reveal-delay: 0.1s"
+      >
+        Uzupełnij rekrutację o wsparcie onboardingowe, zespołowe lub kulturowe
+      </p>
+
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          additionalPackages.map((pkg, i) => (
+            <div
+              class="spotlight rounded-xl border border-brand-grey/20 bg-brand-dark p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-pink/50"
+              data-reveal
+              style={`--reveal-delay: ${i * 0.08}s`}
+            >
+              <div class="mb-4">
+                <svg class="h-8 w-8" viewBox="0 0 32 32" fill="none" set:html={pkg.icon} />
+              </div>
+              <h3 class="text-base font-bold text-white">{pkg.name}</h3>
+              <p class="mt-1 text-lg font-bold text-brand-pink">{pkg.price}</p>
+              <p class="mt-3 text-sm leading-relaxed text-brand-grey">
+                {pkg.description}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Guarantee -->
+  <section class="bg-brand-dark px-6 py-16">
+    <div
+      class="spotlight mx-auto max-w-[800px] rounded-2xl border border-brand-pink/20 bg-gradient-to-br from-brand-pink/5 to-transparent p-8 text-center md:p-12"
+      data-reveal
+    >
+      <div
+        class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-brand-pink/10"
+      >
+        <svg class="h-8 w-8" viewBox="0 0 32 32" fill="none">
+          <path d="M16 4l4 4H28v20H4V8h8l4-4z" stroke="#e00371" stroke-width="2" stroke-linejoin="round"></path>
+          <path d="M10 18l4 4 8-8" stroke="#e00371" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </div>
+      <h3 class="mb-4 text-2xl font-bold text-white">3-miesięczna gwarancja</h3>
+      <p class="leading-relaxed text-brand-grey">
+        W razie odejścia nowego pracownika w ciągu 3 miesięcy – przeprowadzamy
+        ponowną preselekcję kandydatów bez dodatkowych kosztów (zgodnie z
+        warunkami umowy).
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-brand-black px-6 py-20">
+    <div class="text-center" data-reveal>
+      <h2 class="mb-4 text-3xl font-bold text-white md:text-4xl">
+        Nie wiesz, który pakiet wybrać?
+      </h2>
+      <p class="mx-auto mb-8 max-w-lg text-brand-grey">
+        Porozmawiajmy o Twoich potrzebach – pomożemy dobrać najlepsze
+        rozwiązanie.
+      </p>
+      <a
+        href="/kontakt"
+        class="inline-block rounded-full bg-brand-pink px-10 py-4 text-sm font-bold tracking-widest text-white transition-all duration-300 hover:scale-[1.03] hover:bg-brand-pink/85 hover:shadow-[0_0_30px_rgba(224,3,113,0.35)]"
+      >
+        POROZMAWIAJMY
+      </a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .tab-panel {
+    animation: panel-in 0.45s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  .tab-panel[hidden] {
+    display: none;
+  }
+
+  @keyframes panel-in {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tab-panel {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  function setupTabs() {
+    const root = document.getElementById("packages-tabs");
+    if (!root) return;
+
+    const buttons = root.querySelectorAll<HTMLButtonElement>("[data-tab]");
+    const panels = document.querySelectorAll<HTMLElement>("[data-panel]");
+
+    const activeClasses = [
+      "bg-brand-pink",
+      "shadow-[0_0_30px_rgba(224,3,113,0.25)]",
+    ];
+    const inactiveClasses = [
+      "border",
+      "border-brand-grey/20",
+      "bg-brand-dark",
+      "hover:border-brand-pink/50",
+    ];
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const target = button.dataset.tab;
+
+        buttons.forEach((b) => {
+          const active = b === button;
+          b.setAttribute("aria-selected", String(active));
+          b.classList.toggle("text-white", true);
+          activeClasses.forEach((c) => b.classList.toggle(c, active));
+          inactiveClasses.forEach((c) => b.classList.toggle(c, !active));
+          const sublabel = b.querySelector("p:last-child");
+          if (sublabel) {
+            sublabel.classList.toggle("text-white/80", active);
+            sublabel.classList.toggle("text-brand-grey", !active);
+          }
+        });
+
+        panels.forEach((panel) => {
+          panel.hidden = panel.dataset.panel !== target;
+        });
+      });
+    });
+  }
+
+  document.addEventListener("astro:page-load", setupTabs);
+</script>

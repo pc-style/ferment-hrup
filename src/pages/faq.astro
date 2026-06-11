@@ -1,0 +1,220 @@
+---
+import Base from "../layouts/Base.astro";
+
+const faqs = [
+  {
+    q: "Czy HRup to agencja rekrutacyjna?",
+    a: "Nie w klasycznym sensie. Jesteśmy partnerem HR dla branży kulturalnej. Rekrutacja to punkt wyjścia – dbamy, by nowa osoba została w firmie na stałe. Nie pobieramy prowizji procentowej od pensji i unikamy korporacyjnych schematów.",
+  },
+  {
+    q: "Dla jakich organizacji pracujecie?",
+    a: "Kina (studyjne i sieciowe), dystrybutorzy, festiwale, fundacje, instytucje kultury oraz małe zespoły kreatywne. Rozumiemy specyfikę pracy w kulturze: wielozadaniowość i pasję połączoną z ograniczonym budżetem.",
+  },
+  {
+    q: "Jak długo trwa rekrutacja?",
+    a: "Zazwyczaj: START: 4–6 tygodni, CORE: 5–8 tygodni, PRO: 6–9 tygodni. W sytuacjach nagłych oferujemy tryb FAST.",
+  },
+  {
+    q: "Czy zajmujecie się rozmowami z kandydatami?",
+    a: "Tak – w pakietach CORE i PRO prowadzimy rozmowy rekrutacyjne. Do klienta trafiają tylko najlepiej dopasowane osoby z pełną rekomendacją.",
+  },
+  {
+    q: "Ilu kandydatów rekomendujecie?",
+    a: "Stawiamy na jakość: zwykle 2–4 kandydatów finalnych z opisem ich mocnych stron i ryzyk.",
+  },
+  {
+    q: "Co jeśli nikt nie pasuje?",
+    a: 'Nie rekomendujemy nikogo "na siłę". Jeśli rynek nie odpowiada lub profil jest błędny – zatrzymujemy się, by wspólnie przedefiniować strategię.',
+  },
+  {
+    q: "Czy pomagacie w onboardingu?",
+    a: "Tak. W pakiecie PRO dostarczamy checklistę na 30 dni, rekomendacje dla lidera oraz przeprowadzamy check-in z pracownikiem.",
+  },
+  {
+    q: "Co jeśli nowy pracownik odejdzie?",
+    a: "Oferujemy 3-miesięczną gwarancję: w razie odejścia przeprowadzamy ponowną preselekcję bez dodatkowych kosztów (zgodnie z umową).",
+  },
+  {
+    q: "Czy pomagacie tylko w rekrutacji?",
+    a: "Nie. Często porządkujemy zakresy ról, wskazujemy ryzyka i wspieramy liderów w zarządzaniu. Rozwijamy się wraz z potrzebami klienta.",
+  },
+  {
+    q: "Jak wygląda start współpracy?",
+    a: "Krótka rozmowa → doprecyzowanie potrzeb → podpisanie umowy → start. Bez zbędnych formalności.",
+  },
+  {
+    q: "Dlaczego HRup?",
+    a: 'Bo rozumiemy kulturę, mówimy ludzkim językiem i nie stosujemy rozwiązań "z szablonu".',
+  },
+];
+
+const quickAnswers = [
+  {
+    title: "Czas rekrutacji",
+    body: "4–9 tygodni w zależności od pakietu",
+    accent: "Tryb FAST: +30% do pakietu",
+    icon: `<path d="M12 8v4l3 3" stroke="#e00371" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="#e00371" stroke-width="2"/>`,
+  },
+  {
+    title: "Kandydaci finałowi",
+    body: "2–4 dopasowanych kandydatów z rekomendacją",
+    accent: "Jakość, nie ilość",
+    icon: `<circle cx="9" cy="9" r="4" stroke="#e00371" stroke-width="2"/><circle cx="15" cy="9" r="4" stroke="#e00371" stroke-width="2"/><path d="M4 20c0-3 3-5 5-5h2M15 15h2c2 0 5 2 5 5" stroke="#e00371" stroke-width="2" stroke-linecap="round"/>`,
+  },
+  {
+    title: "Gwarancja",
+    body: "3 miesiące – ponowna preselekcja bez kosztów",
+    accent: "Dbamy o długofalowy sukces",
+    icon: `<path d="M12 2l3 6 6 1-4 4 1 6-6-3-6 3 1-6-4-4 6-1z" stroke="#e00371" stroke-width="2" stroke-linejoin="round"/>`,
+  },
+];
+---
+
+<Base title="FAQ | HRup - ludzie z kulturą">
+  <!-- Hero -->
+  <section
+    class="relative flex min-h-[44vh] flex-col items-center justify-center overflow-hidden bg-brand-black px-6 pt-8 text-center"
+  >
+    <div
+      class="pointer-events-none absolute inset-0"
+      style="background: radial-gradient(ellipse 70% 55% at 50% -10%, rgba(224,3,113,0.12), transparent 70%);"
+    >
+    </div>
+    <div class="line-reveal relative">
+      <p class="mb-4 text-sm tracking-[0.3em] text-brand-grey uppercase">FAQ</p>
+    </div>
+    <h1
+      class="relative text-5xl font-bold tracking-tight uppercase md:text-7xl lg:text-8xl"
+    >
+      <span class="line-reveal" style="--line-delay: 0.15s">
+        <span><span class="text-brand-pink lowercase">dla</span> ODPOWIEDZI</span>
+      </span>
+    </h1>
+    <div class="line-reveal relative" style="--line-delay: 0.3s">
+      <p class="mt-4 text-lg text-brand-grey md:text-xl">
+        Najczęściej zadawane pytania
+      </p>
+    </div>
+  </section>
+
+  <!-- Accordion -->
+  <section class="bg-brand-dark py-20">
+    <div class="mx-auto max-w-[800px] px-6" id="faq-list">
+      {
+        faqs.map((faq, i) => (
+          <div
+            class="accordion-item border-b border-brand-grey/20"
+            data-reveal
+            style={`--reveal-delay: ${Math.min(i * 0.04, 0.3)}s`}
+          >
+            <button
+              type="button"
+              class="group flex w-full items-center justify-between gap-4 py-6 text-left"
+              aria-expanded="false"
+            >
+              <span class="flex items-start gap-4">
+                <span class="mt-0.5 text-sm font-bold text-brand-pink/40 transition-colors duration-200 group-hover:text-brand-pink">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span class="text-base font-bold text-white transition-colors duration-200 group-hover:text-brand-pink md:text-lg">
+                  {faq.q}
+                </span>
+              </span>
+              <span class="accordion-icon shrink-0 text-2xl leading-none text-brand-pink">
+                +
+              </span>
+            </button>
+            <div class="accordion-panel">
+              <div>
+                <p class="pb-6 pl-10 leading-relaxed font-light text-brand-grey">
+                  {faq.a}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Quick answers -->
+  <section class="bg-brand-black py-20">
+    <div class="mx-auto max-w-[1280px] px-6">
+      <h2
+        class="mb-12 text-center text-3xl font-bold text-white md:text-4xl"
+        data-reveal
+      >
+        W skrócie
+      </h2>
+
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {
+          quickAnswers.map((item, i) => (
+            <div
+              class="spotlight rounded-xl border border-brand-grey/20 bg-brand-dark p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-pink/40"
+              data-reveal
+              style={`--reveal-delay: ${i * 0.1}s`}
+            >
+              <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-brand-pink/10">
+                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" set:html={item.icon} />
+              </div>
+              <h3 class="mb-2 text-lg font-bold text-white">{item.title}</h3>
+              <p class="text-sm text-brand-grey">{item.body}</p>
+              <p class="mt-2 text-xs text-brand-pink">{item.accent}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-brand-dark py-24">
+    <div
+      class="mx-auto flex max-w-[800px] flex-col items-center px-6 text-center"
+      data-reveal
+    >
+      <h2 class="text-3xl font-bold text-white md:text-5xl">
+        Masz inne pytanie?
+      </h2>
+      <p class="mt-4 text-brand-grey">
+        Napisz do nas – chętnie odpowiemy na wszystkie wątpliwości.
+      </p>
+      <a
+        href="/kontakt"
+        class="mt-10 inline-block rounded-full bg-brand-pink px-10 py-4 text-sm font-bold tracking-widest text-white uppercase transition-all duration-300 hover:scale-[1.03] hover:bg-brand-pink/85 hover:shadow-[0_0_30px_rgba(224,3,113,0.35)]"
+      >
+        NAPISZ DO NAS
+      </a>
+    </div>
+  </section>
+</Base>
+
+<script>
+  function setupAccordion() {
+    const list = document.getElementById("faq-list");
+    if (!list) return;
+
+    list.querySelectorAll<HTMLElement>(".accordion-item").forEach((item) => {
+      const button = item.querySelector("button");
+      if (!button) return;
+      button.addEventListener("click", () => {
+        const isOpen = item.hasAttribute("data-open");
+
+        list
+          .querySelectorAll<HTMLElement>(".accordion-item[data-open]")
+          .forEach((open) => {
+            open.removeAttribute("data-open");
+            open.querySelector("button")?.setAttribute("aria-expanded", "false");
+          });
+
+        if (!isOpen) {
+          item.setAttribute("data-open", "");
+          button.setAttribute("aria-expanded", "true");
+        }
+      });
+    });
+  }
+
+  document.addEventListener("astro:page-load", setupAccordion);
+</script>

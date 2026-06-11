@@ -1,0 +1,297 @@
+---
+import Base from "../layouts/Base.astro";
+
+const strategicHRItems = [
+  "Projektowanie struktury organizacji w oparciu o role i potrzeby biznesowe",
+  "Tworzenie i monitorowanie parametrów dot. zaangażowania, efektywności i produktywności",
+  "Tworzenie kultury organizacyjnej wspierającej odpowiedzialność",
+];
+
+const recruitmentSteps = [
+  "Stworzenie profilu idealnego kandydata",
+  "Stworzenie przyciągającego uwagę ogłoszenia rekrutacyjnego i/lub innych materiałów marketingowych (foto/video)",
+  "Zaprojektowanie kampanii reklamowej (performance w SoMe, serwisy rekrutacyjne, działania analogowe)",
+  "Przeprowadzenie pełnego procesu rekrutacji: preselekcja aplikacji, rozmowy badające postawę, przygotowanie mentalne, kwalifikacje i dopasowanie do zespołu",
+  "Analiza zadań rekrutacyjnych i rozmowy finałowe",
+  "Właściwe przekazywanie informacji odmownych",
+];
+
+const onboardingItems = [
+  "Mapowanie kompetencji potrzebnych do pracy",
+  "Uzupełnienie wiedzy o rynku i jego mechanizmach",
+  "Wyznaczenie parametrów sukcesu na stanowisku",
+  "Monitorowanie i optymalizacja",
+  "Ścieżka off-boarding: bezpieczne i pełne szacunku rozstanie z pracownikiem",
+];
+
+const trainingTopics = [
+  "Budowanie kultury feedbacku",
+  "Rola empatii w komunikacji i współpracy",
+  "Delegowanie odpowiedzialności",
+  "Przejrzystość ról i stanowisk",
+  "Modelowanie kultury higieny pracy i wellbeingu",
+  "Standardy rozwiązywania konfliktów w zespole",
+];
+
+const teamMembers = [
+  { name: "Asia", role: "HR & Rekrutacja" },
+  { name: "Paulina", role: "Processes & Culture" },
+];
+---
+
+<Base title="Usługi | HRup - ludzie z kulturą">
+  <!-- Hero -->
+  <section
+    class="relative flex min-h-[44vh] flex-col items-center justify-center overflow-hidden bg-brand-black px-6 pt-8"
+  >
+    <div
+      class="pointer-events-none absolute inset-0"
+      style="background: radial-gradient(ellipse 70% 55% at 50% -10%, rgba(224,3,113,0.12), transparent 70%);"
+    >
+    </div>
+    <h1
+      class="relative text-center text-5xl font-bold tracking-tight md:text-7xl"
+    >
+      <span class="line-reveal">
+        <span><span class="text-brand-pink">dla</span> ROZWOJU</span>
+      </span>
+    </h1>
+    <div class="line-reveal relative" style="--line-delay: 0.15s">
+      <p class="mt-4 text-lg text-brand-grey md:text-xl">
+        Zakres proponowanych usług
+      </p>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="bg-brand-dark py-20">
+    <div class="mx-auto max-w-[1280px] space-y-0">
+      <!-- Rekrutacje -->
+      <div
+        class="grid gap-12 bg-brand-dark px-6 py-16 md:grid-cols-2 md:items-start md:gap-16"
+      >
+        <div data-reveal>
+          <h2 class="text-3xl font-bold text-white md:text-4xl">
+            Rekrutacje na stanowiska funkcyjne
+          </h2>
+          <p class="mt-4 text-brand-grey">
+            Kompleksowy proces rekrutacji od A do Z.
+          </p>
+        </div>
+        <div class="relative space-y-6 pl-12">
+          <div
+            class="absolute top-0 bottom-0 left-[19px] w-px bg-gradient-to-b from-brand-pink via-brand-pink/50 to-brand-pink/20"
+          >
+          </div>
+          {
+            recruitmentSteps.map((step, i) => (
+              <div
+                class="relative flex items-start"
+                data-reveal
+                style={`--reveal-delay: ${i * 0.08}s`}
+              >
+                <span class="absolute -left-12 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-pink text-sm font-bold text-white shadow-[0_0_20px_rgba(224,3,113,0.3)]">
+                  {i + 1}
+                </span>
+                <p class="leading-relaxed text-brand-grey">{step}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Onboarding & Off-boarding -->
+      <div
+        class="grid gap-12 bg-brand-black px-6 py-16 md:grid-cols-2 md:items-center md:gap-16"
+      >
+        <div class="flex items-center justify-center md:order-2" data-reveal>
+          <div
+            class="spotlight flex h-40 w-40 items-center justify-center rounded-2xl border border-brand-pink/20 bg-gradient-to-br from-brand-pink/20 to-brand-pink/5"
+          >
+            <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
+              <rect x="18" y="10" width="36" height="48" rx="4" stroke="#e00371" stroke-width="2.5"></rect>
+              <path d="M30 8h12a2 2 0 0 1 2 2v4H28v-4a2 2 0 0 1 2-2z" stroke="#e00371" stroke-width="2.5"></path>
+              <path d="M28 34l5 5 11-11" stroke="#e00371" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path d="M26 46h20M26 52h14" stroke="#e00371" stroke-width="2" stroke-linecap="round" opacity="0.4"></path>
+            </svg>
+          </div>
+        </div>
+        <div class="md:order-1">
+          <h2 class="text-3xl font-bold text-white md:text-4xl" data-reveal>
+            Pomoc we wdrożeniach i off-boardingu
+          </h2>
+          <ul class="mt-6 space-y-4">
+            {
+              onboardingItems.map((item, i) => (
+                <li
+                  class="flex items-start gap-3 text-brand-grey"
+                  data-reveal
+                  style={`--reveal-delay: ${i * 0.08}s`}
+                >
+                  <span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-brand-pink" />
+                  <span class="leading-relaxed">{item}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+
+      <!-- Szkolenia -->
+      <div class="bg-brand-dark px-6 py-16">
+        <div class="grid gap-12 md:grid-cols-2 md:items-start md:gap-16">
+          <div data-reveal>
+            <h2 class="text-3xl font-bold text-white md:text-4xl">
+              Szkolenia kompetencji menedżerskich
+            </h2>
+            <span
+              class="mt-3 inline-block rounded-full border border-brand-pink/40 bg-brand-pink/20 px-4 py-1 text-xs font-semibold tracking-wider text-brand-pink uppercase"
+            >
+              Dalszy etap
+            </span>
+            <p class="mt-4 text-brand-grey">
+              Rozwijamy umiejętności liderów i zespołów w obszarach kluczowych
+              dla efektywnego zarządzania w branży kulturalnej.
+            </p>
+          </div>
+          <ul class="space-y-4">
+            {
+              trainingTopics.map((topic, i) => (
+                <li
+                  class="flex items-center gap-3 text-brand-grey"
+                  data-reveal
+                  style={`--reveal-delay: ${i * 0.08}s`}
+                >
+                  <span class="h-2.5 w-2.5 shrink-0 rounded-full bg-brand-pink/40" />
+                  {topic}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+
+      <!-- HR Strategiczny -->
+      <div
+        class="grid gap-12 bg-brand-black px-6 py-16 md:grid-cols-2 md:items-center md:gap-16"
+      >
+        <div class="flex items-center justify-center md:order-2" data-reveal>
+          <div
+            class="spotlight flex h-40 w-40 items-center justify-center rounded-2xl border border-brand-pink/20 bg-gradient-to-br from-brand-pink/20 to-brand-pink/5"
+          >
+            <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
+              <rect x="12" y="12" width="48" height="48" rx="8" stroke="#e00371" stroke-width="2.5"></rect>
+              <circle cx="36" cy="30" r="8" stroke="#e00371" stroke-width="2.5"></circle>
+              <path d="M20 54c0-8.837 7.163-16 16-16s16 7.163 16 16" stroke="#e00371" stroke-width="2.5" stroke-linecap="round"></path>
+            </svg>
+          </div>
+        </div>
+        <div class="md:order-1">
+          <h2 class="text-3xl font-bold text-white md:text-4xl" data-reveal>
+            HR Strategiczny na godziny
+          </h2>
+          <span
+            class="mt-3 inline-block rounded-full border border-brand-pink/40 bg-brand-pink/20 px-4 py-1 text-xs font-semibold tracking-wider text-brand-pink uppercase"
+            data-reveal
+          >
+            Dalszy etap
+          </span>
+          <ul class="mt-6 space-y-4">
+            {
+              strategicHRItems.map((item, i) => (
+                <li
+                  class="flex items-start gap-3 text-brand-grey"
+                  data-reveal
+                  style={`--reveal-delay: ${i * 0.08}s`}
+                >
+                  <span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-brand-pink" />
+                  <span class="leading-relaxed">{item}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Start -->
+  <section class="bg-brand-dark py-20">
+    <div class="mx-auto max-w-[1280px] px-6">
+      <div
+        class="spotlight rounded-2xl border border-brand-pink/20 bg-gradient-to-br from-brand-pink/10 to-transparent p-8 md:p-12"
+        data-reveal
+      >
+        <div class="grid gap-8 md:grid-cols-2 md:items-center">
+          <div>
+            <h2 class="mb-4 text-3xl font-bold text-white md:text-4xl">
+              Start działalności
+            </h2>
+            <div class="mb-6 flex items-baseline gap-2">
+              <span class="text-5xl font-bold text-brand-pink md:text-6xl">06</span>
+              <span class="text-5xl font-bold text-white md:text-6xl">.</span>
+              <span class="text-5xl font-bold text-white md:text-6xl">2026</span>
+            </div>
+            <p class="leading-relaxed text-brand-grey">
+              Konsultacje możliwe już teraz – skontaktuj się z naszym zespołem,
+              aby omówić Twoje potrzeby i zaplanować współpracę.
+            </p>
+          </div>
+          <div>
+            <p class="mb-4 text-xs tracking-wider text-brand-grey/60 uppercase">
+              Zespół HRup
+            </p>
+            <div class="space-y-4">
+              {
+                teamMembers.map((member, i) => (
+                  <div
+                    class="flex items-center gap-4 rounded-xl border border-brand-grey/10 bg-brand-black/50 p-4"
+                    data-reveal
+                    style={`--reveal-delay: ${i * 0.1}s`}
+                  >
+                    <div class="flex h-12 w-12 items-center justify-center rounded-full bg-brand-pink/10">
+                      <span class="font-bold text-brand-pink">{member.name[0]}</span>
+                    </div>
+                    <div>
+                      <p class="font-semibold text-white">{member.name}</p>
+                      <p class="text-sm text-brand-grey">{member.role}</p>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-brand-black py-24">
+    <div
+      class="mx-auto flex max-w-[1280px] flex-col items-center px-6 text-center"
+      data-reveal
+    >
+      <h2 class="text-3xl font-bold text-white md:text-5xl">
+        Chcesz wiedzieć więcej?
+      </h2>
+      <p class="mt-4 max-w-lg text-brand-grey">
+        Sprawdź nasze pakiety cenowe lub skontaktuj się bezpośrednio z zespołem.
+      </p>
+      <div class="mt-10 flex flex-col gap-4 sm:flex-row">
+        <a
+          href="/pakiety"
+          class="inline-block rounded-full bg-brand-pink px-10 py-4 text-sm font-bold tracking-widest text-white uppercase transition-all duration-300 hover:scale-[1.03] hover:bg-brand-pink/85 hover:shadow-[0_0_30px_rgba(224,3,113,0.35)]"
+        >
+          ZOBACZ PAKIETY
+        </a>
+        <a
+          href="/kontakt"
+          class="inline-block rounded-full border-2 border-brand-pink px-10 py-4 text-sm font-bold tracking-widest text-brand-pink uppercase transition-all duration-300 hover:bg-brand-pink hover:text-white"
+        >
+          KONTAKT
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>

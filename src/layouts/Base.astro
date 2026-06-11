@@ -1,0 +1,86 @@
+---
+import { ClientRouter } from "astro:transitions";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = "HRup - partner HR dla branży kulturalnej. Rekrutacja, onboarding i wsparcie zespołów dla instytucji kultury i kina.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <ClientRouter />
+  </head>
+  <body class="min-h-screen bg-brand-black font-montserrat">
+    <div class="grain" aria-hidden="true"></div>
+    <Navbar />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      function initReveals() {
+        const elements = document.querySelectorAll<HTMLElement>("[data-reveal]");
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          elements.forEach((el) => el.classList.add("is-visible"));
+          return;
+        }
+        const observer = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            }
+          },
+          { threshold: 0.15, rootMargin: "0px 0px -40px 0px" },
+        );
+        elements.forEach((el) => observer.observe(el));
+      }
+
+      function initSpotlights() {
+        if (!window.matchMedia("(hover: hover)").matches) return;
+        let frame = 0;
+        document.querySelectorAll<HTMLElement>(".spotlight").forEach((card) => {
+          card.addEventListener("pointermove", (e) => {
+            if (frame) return;
+            frame = requestAnimationFrame(() => {
+              frame = 0;
+              const rect = card.getBoundingClientRect();
+              card.style.setProperty("--mx", `${e.clientX - rect.left}px`);
+              card.style.setProperty("--my", `${e.clientY - rect.top}px`);
+            });
+          });
+        });
+      }
+
+      document.addEventListener("astro:page-load", () => {
+        initReveals();
+        initSpotlights();
+      });
+    </script>
+  </body>
+</html>

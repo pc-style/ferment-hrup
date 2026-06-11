@@ -1,0 +1,145 @@
+---
+const navLinks = [
+  { to: "/o-nas", label: "O nas" },
+  { to: "/uslugi", label: "Usługi" },
+  { to: "/pakiety", label: "Pakiety" },
+  { to: "/faq", label: "FAQ" },
+  { to: "/kontakt", label: "Kontakt" },
+];
+
+const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
+---
+
+<nav
+  id="site-nav"
+  class="fixed top-0 left-0 right-0 z-50 border-b border-brand-white/5 bg-brand-black/85 backdrop-blur-md transition-shadow duration-300"
+>
+  <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
+    <a href="/" class="flex items-center" aria-label="HRup - strona główna">
+      <img src="/logo.png" alt="HRup" class="h-20 w-auto" />
+    </a>
+
+    <div class="hidden items-center gap-8 lg:flex">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.to}
+            aria-current={currentPath === link.to ? "page" : undefined}
+            class:list={[
+              "nav-link text-sm font-medium tracking-wide transition-colors duration-200",
+              currentPath === link.to
+                ? "text-brand-pink"
+                : "text-brand-white hover:text-brand-pink",
+            ]}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </div>
+
+    <div class="hidden lg:block">
+      <a
+        href="/kontakt"
+        class="inline-block rounded-full bg-brand-pink px-6 py-3 text-xs font-semibold tracking-widest text-brand-white transition-all duration-300 hover:bg-brand-pink/85 hover:shadow-[0_0_24px_rgba(224,3,113,0.35)]"
+      >
+        POROZMAWIAJMY
+      </a>
+    </div>
+
+    <button
+      type="button"
+      id="menu-toggle"
+      class="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
+      aria-label="Otwórz menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <span class="menu-bar block h-0.5 w-6 origin-center bg-brand-white transition-transform duration-300"></span>
+      <span class="menu-bar block h-0.5 w-6 bg-brand-white transition-opacity duration-300"></span>
+      <span class="menu-bar block h-0.5 w-6 origin-center bg-brand-white transition-transform duration-300"></span>
+    </button>
+  </div>
+
+  <div
+    id="mobile-menu"
+    class="pointer-events-none fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 bg-brand-black/95 opacity-0 backdrop-blur-xl transition-opacity duration-300 lg:hidden"
+  >
+    {
+      navLinks.map((link, i) => (
+        <a
+          href={link.to}
+          class:list={[
+            "mobile-link translate-y-4 text-2xl font-medium tracking-wide opacity-0 transition-all duration-300",
+            currentPath === link.to
+              ? "text-brand-pink"
+              : "text-brand-white hover:text-brand-pink",
+          ]}
+          style={`transition-delay: ${80 + i * 50}ms`}
+        >
+          {link.label}
+        </a>
+      ))
+    }
+    <a
+      href="/kontakt"
+      class="mobile-link mt-4 inline-block translate-y-4 rounded-full bg-brand-pink px-8 py-4 text-sm font-semibold tracking-widest text-brand-white opacity-0 transition-all duration-300 hover:bg-brand-pink/85"
+      style={`transition-delay: ${80 + navLinks.length * 50}ms`}
+    >
+      POROZMAWIAJMY
+    </a>
+  </div>
+</nav>
+
+<div class="h-20"></div>
+
+<style>
+  #site-nav.menu-open #mobile-menu {
+    pointer-events: auto;
+    opacity: 1;
+  }
+
+  #site-nav.menu-open .mobile-link {
+    translate: 0 0;
+    opacity: 1;
+    transform: none;
+  }
+
+  #site-nav.menu-open .menu-bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  #site-nav.menu-open .menu-bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  #site-nav.menu-open .menu-bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+</style>
+
+<script>
+  function setupNav() {
+    const nav = document.getElementById("site-nav");
+    const toggle = document.getElementById("menu-toggle");
+    if (!nav || !toggle || nav.dataset.bound) return;
+    nav.dataset.bound = "true";
+
+    toggle.addEventListener("click", () => {
+      const open = nav.classList.toggle("menu-open");
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.setAttribute("aria-label", open ? "Zamknij menu" : "Otwórz menu");
+      document.body.style.overflow = open ? "hidden" : "";
+    });
+
+    nav.querySelectorAll("#mobile-menu a").forEach((link) => {
+      link.addEventListener("click", () => {
+        nav.classList.remove("menu-open");
+        toggle.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
+      });
+    });
+  }
+
+  document.addEventListener("astro:page-load", setupNav);
+</script>

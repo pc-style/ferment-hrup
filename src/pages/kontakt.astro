@@ -1,0 +1,229 @@
+---
+import Base from "../layouts/Base.astro";
+
+const packages = [
+  { group: "Frontline", items: ["Template", "START", "CORE", "PRO"] },
+  { group: "Talent", items: ["START", "CORE", "PRO"] },
+  { group: "Leader", items: ["CORE", "PRO"] },
+  { group: "Dodatkowe", items: ["FAST", "Onboard", "Team", "Culture"] },
+];
+
+const team = [
+  { name: "Asia", role: "HR & Rekrutacja" },
+  { name: "Paulina", role: "Processes & Culture" },
+];
+
+const inputClasses =
+  "w-full rounded-lg border border-brand-grey/30 bg-brand-black px-4 py-3 text-white placeholder:text-brand-grey/50 focus:border-brand-pink focus:outline-none focus:ring-1 focus:ring-brand-pink/30 transition";
+---
+
+<Base title="Kontakt | HRup - ludzie z kulturą">
+  <!-- Hero -->
+  <section
+    class="relative flex min-h-[44vh] flex-col items-center justify-center overflow-hidden bg-brand-black px-6 pt-8 text-center"
+  >
+    <div
+      class="pointer-events-none absolute inset-0"
+      style="background: radial-gradient(ellipse 70% 55% at 50% -10%, rgba(224,3,113,0.12), transparent 70%);"
+    >
+    </div>
+    <div class="line-reveal relative">
+      <p class="mb-4 text-sm tracking-[0.3em] text-brand-grey uppercase">
+        Kontakt
+      </p>
+    </div>
+    <h1
+      class="relative text-5xl font-bold tracking-tight uppercase md:text-7xl lg:text-8xl"
+    >
+      <span class="line-reveal" style="--line-delay: 0.15s">
+        <span><span class="text-brand-pink lowercase">dla</span> ROZMOWY</span>
+      </span>
+    </h1>
+  </section>
+
+  <!-- Contact form -->
+  <section class="bg-brand-dark py-24">
+    <div class="mx-auto grid max-w-[1280px] gap-16 px-6 lg:grid-cols-2">
+      <div data-reveal>
+        <h2 class="mb-6 text-3xl font-bold md:text-4xl">Porozmawiajmy</h2>
+        <div class="mb-6 flex items-baseline gap-2">
+          <span class="text-sm text-brand-grey">Start współpracy od:</span>
+          <span class="text-2xl font-bold text-white"
+            >06<span class="text-brand-pink">.</span>2026</span
+          >
+        </div>
+        <p class="mb-8 text-brand-grey">
+          Konsultacje możliwe już teraz – skontaktuj się z naszym zespołem.
+        </p>
+
+        <div class="mb-10 space-y-4">
+          {
+            team.map((member, i) => (
+              <div
+                class="spotlight flex items-center gap-4 rounded-xl border border-brand-grey/10 bg-brand-black/50 p-4"
+                data-reveal
+                style={`--reveal-delay: ${0.15 + i * 0.1}s`}
+              >
+                <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-pink/10">
+                  <span class="font-bold text-brand-pink">{member.name[0]}</span>
+                </div>
+                <div>
+                  <p class="font-semibold text-white">{member.name}</p>
+                  <p class="text-sm text-brand-grey">{member.role}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+
+        <div
+          class="rounded-xl border border-brand-pink/20 bg-gradient-to-br from-brand-pink/5 to-transparent p-6"
+          data-reveal
+          style="--reveal-delay: 0.35s"
+        >
+          <p class="mb-2 font-semibold text-white">Jak wygląda start?</p>
+          <p class="text-sm leading-relaxed text-brand-grey">
+            Krótka rozmowa → doprecyzowanie potrzeb → wybór pakietu →
+            podpisanie umowy → start. Bez zbędnych formalności.
+          </p>
+        </div>
+      </div>
+
+      <div data-reveal style="--reveal-delay: 0.15s">
+        <form
+          id="contact-form"
+          class="space-y-5 rounded-2xl border border-white/5 bg-brand-black/50 p-8"
+        >
+          <div>
+            <label for="cf-name" class="mb-1.5 block text-sm text-brand-grey">
+              Imię i nazwisko *
+            </label>
+            <input
+              id="cf-name"
+              type="text"
+              required
+              class={inputClasses}
+              placeholder="Jan Kowalski"
+            />
+          </div>
+
+          <div>
+            <label for="cf-email" class="mb-1.5 block text-sm text-brand-grey">
+              Email *
+            </label>
+            <input
+              id="cf-email"
+              type="email"
+              required
+              class={inputClasses}
+              placeholder="jan@example.com"
+            />
+          </div>
+
+          <div>
+            <label for="cf-org" class="mb-1.5 block text-sm text-brand-grey">
+              Organizacja
+            </label>
+            <input
+              id="cf-org"
+              type="text"
+              class={inputClasses}
+              placeholder="Nazwa organizacji"
+            />
+          </div>
+
+          <div>
+            <label for="cf-package" class="mb-1.5 block text-sm text-brand-grey">
+              Interesujący pakiet
+            </label>
+            <select id="cf-package" class={inputClasses + " appearance-none"}>
+              <option value="" class="bg-brand-black">
+                Wybierz pakiet (opcjonalnie)
+              </option>
+              {
+                packages.map((group) => (
+                  <optgroup label={group.group} class="bg-brand-black">
+                    {group.items.map((pkg) => (
+                      <option value={`${group.group} ${pkg}`} class="bg-brand-black">
+                        {group.group} {pkg}
+                      </option>
+                    ))}
+                  </optgroup>
+                ))
+              }
+              <option value="Inne" class="bg-brand-black">
+                Inne / Nie wiem jeszcze
+              </option>
+            </select>
+          </div>
+
+          <div>
+            <label for="cf-message" class="mb-1.5 block text-sm text-brand-grey">
+              Wiadomość
+            </label>
+            <textarea
+              id="cf-message"
+              class={inputClasses + " min-h-32 resize-y"}
+              placeholder="Opowiedz nam o swoich potrzebach rekrutacyjnych..."></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full rounded-lg bg-brand-pink py-4 font-semibold text-white transition-all duration-300 hover:bg-brand-pink/85 hover:shadow-[0_0_20px_rgba(224,3,113,0.25)]"
+          >
+            WYŚLIJ WIADOMOŚĆ
+          </button>
+
+          <div
+            id="form-success"
+            hidden
+            class="rounded-lg border border-brand-pink/20 bg-brand-pink/10 p-4 text-center"
+          >
+            <p class="font-medium text-brand-pink">
+              Dziękujemy! Wiadomość została wysłana.
+            </p>
+            <p class="mt-1 text-sm text-brand-grey">
+              Odezwiemy się najszybciej jak to możliwe.
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ferment Kolektiv -->
+  <section class="bg-brand-black py-16">
+    <div class="mx-auto max-w-[1280px] px-6">
+      <div
+        class="flex flex-col items-center justify-center gap-6 text-center md:flex-row"
+        data-reveal
+      >
+        <p class="font-medium text-white">HRup to część kolektywu</p>
+        <a
+          href="https://ferment.com.pl/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="transition-opacity duration-200 hover:opacity-80"
+        >
+          <img src="/logo.webp" alt="ferment" class="h-10 w-auto" />
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script>
+  function setupForm() {
+    const form = document.getElementById("contact-form") as HTMLFormElement | null;
+    const success = document.getElementById("form-success");
+    if (!form || !success) return;
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      success.hidden = false;
+      success.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+  }
+
+  document.addEventListener("astro:page-load", setupForm);
+</script>

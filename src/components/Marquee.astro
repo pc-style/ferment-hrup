@@ -1,0 +1,28 @@
+---
+interface Props {
+  items: string[];
+}
+
+const { items } = Astro.props;
+---
+
+<div
+  class="marquee border-y border-brand-white/5 bg-brand-dark py-5"
+  aria-hidden="true"
+>
+  {
+    [0, 1].map(() => (
+      <div class="marquee-track">
+        {items.map((item) => (
+          <span class="flex shrink-0 items-center gap-6 pr-6 text-sm font-semibold tracking-[0.25em] whitespace-nowrap uppercase">
+            <span>
+              <span class="text-brand-pink lowercase">dla</span>{" "}
+              <span class="text-brand-white/70">{item}</span>
+            </span>
+            <span class="text-brand-pink/50">✦</span>
+          </span>
+        ))}
+      </div>
+    ))
+  }
+</div>

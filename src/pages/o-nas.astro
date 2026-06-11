@@ -1,0 +1,255 @@
+---
+import Base from "../layouts/Base.astro";
+
+const values = [
+  "rozumiemy kulturę, nie tylko HR",
+  "mówimy prostym językiem",
+  "dbamy o ludzi i organizacje",
+  "nie sprzedajemy rozwiązań «z szablonu»",
+];
+
+const clients = [
+  "kinami studyjnymi i sieciowymi",
+  "dystrybutorami filmowymi",
+  "festiwalami i wydarzeniami filmowymi",
+  "fundacjami i instytucjami kultury",
+  "małymi zespołami kreatywnymi",
+];
+---
+
+<Base title="O nas | HRup - ludzie z kulturą">
+  <!-- Hero -->
+  <section
+    class="relative flex min-h-[44vh] flex-col items-center justify-center overflow-hidden bg-brand-black px-6 pt-8 text-center"
+  >
+    <div
+      class="pointer-events-none absolute inset-0"
+      style="background: radial-gradient(ellipse 70% 55% at 50% -10%, rgba(224,3,113,0.12), transparent 70%);"
+    >
+    </div>
+    <div class="line-reveal relative">
+      <p class="mb-4 text-sm tracking-[0.3em] text-brand-grey uppercase">O nas</p>
+    </div>
+    <h1
+      class="relative text-5xl font-bold tracking-tight uppercase md:text-7xl lg:text-8xl"
+    >
+      <span class="line-reveal" style="--line-delay: 0.15s">
+        <span><span class="text-brand-pink lowercase">dla</span> POZNANIA</span>
+      </span>
+    </h1>
+  </section>
+
+  <!-- Geneza -->
+  <section class="bg-brand-dark py-24">
+    <div class="mx-auto max-w-[1280px] px-6">
+      <h2 class="mb-12 text-3xl font-bold md:text-4xl" data-reveal>Geneza</h2>
+
+      <div class="grid gap-12 lg:grid-cols-2">
+        <div class="space-y-6">
+          <p
+            class="leading-relaxed font-light text-brand-grey"
+            data-reveal
+            style="--reveal-delay: 0.08s"
+          >
+            Coraz częściej otrzymywaliśmy od naszych klientów prośby o pomoc w
+            rekrutacji, onboardingu, przygotowaniu nowych osób do pracy w
+            branży, podejmowaniu decyzji personalnych. Jednocześnie sami jako
+            organizacja zdobyliśmy szeroką wiedzę teoretyczną oraz praktyczne
+            doświadczenie dot. procesu rekrutacyjnego, roli HR-u strategicznego
+            i kultury organizacyjnej.
+          </p>
+
+          <p
+            class="leading-relaxed font-light text-brand-grey"
+            data-reveal
+            style="--reveal-delay: 0.16s"
+          >
+            W ostatnich 4 latach kolektyw{" "}
+            <a
+              href="https://ferment.com.pl/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-medium text-brand-pink hover:underline"
+            >
+              Ferment
+            </a>{" "}
+            zwiększył swoje zatrudnienie ponadtrzykrotnie.
+          </p>
+
+          <p
+            class="leading-relaxed font-light text-brand-grey"
+            data-reveal
+            style="--reveal-delay: 0.24s"
+          >
+            W każdej rekrutacji wielokrotnie spotykamy się z opiniami kandydatów
+            wyrażających wręcz ekscytację treścią ogłoszenia rekrutacyjnego,
+            przejrzystością procesu, który na każdym etapie coraz bardziej
+            angażuje kandydata oraz sposobem komunikacji – który przekłada się
+            na employer branding przyciągający do organizacji najlepsze talenty.
+          </p>
+        </div>
+
+        <div class="space-y-6">
+          <p
+            class="leading-relaxed font-light text-brand-grey"
+            data-reveal
+            style="--reveal-delay: 0.12s"
+          >
+            Jednocześnie obserwujemy sporo problemów w branży, która obawia się
+            pozyskiwania talentów spoza rynku upowszechniania kultury filmowej w
+            obawie, że nie będzie w stanie przygotować szybko tych osób do pracy
+            w branży.
+          </p>
+
+          <p
+            class="leading-relaxed font-light text-brand-grey"
+            data-reveal
+            style="--reveal-delay: 0.2s"
+          >
+            Stąd popularne „transfery", np. z jednej firmy dystrybucyjnej do
+            drugiej: nie oceniamy tego negatywnie, ale na pewno ogranicza to
+            możliwość współpracy z najlepszymi potencjalnymi kandydatami – i tym
+            samym budowania innowacyjnych zespołów.
+          </p>
+
+          <div
+            class="spotlight mt-8 rounded-xl border border-brand-pink/20 bg-gradient-to-br from-brand-pink/10 to-transparent p-8"
+            data-reveal
+            style="--reveal-delay: 0.3s"
+          >
+            <p class="text-6xl font-bold text-brand-pink md:text-7xl">3×</p>
+            <p class="mt-3 text-lg font-light text-brand-grey">
+              wzrost zatrudnienia w kolektywie{" "}
+              <a
+                href="https://ferment.com.pl/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-brand-pink hover:underline"
+              >
+                Ferment
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why HRup -->
+  <section class="bg-brand-black py-24">
+    <div class="mx-auto max-w-[1280px] px-6">
+      <h2 class="mb-16 text-3xl font-bold md:text-4xl" data-reveal>
+        Dlaczego <span class="text-brand-pink">HRup</span>?
+      </h2>
+
+      <div class="grid gap-6 md:grid-cols-2">
+        {
+          values.map((value, i) => (
+            <div
+              class="spotlight flex items-start gap-5 rounded-xl border border-white/5 bg-brand-dark p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-pink/20"
+              data-reveal
+              style={`--reveal-delay: ${i * 0.1}s`}
+            >
+              <span class="text-3xl leading-none font-bold text-brand-pink">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <p class="text-lg font-light text-brand-grey">{value}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- For Whom -->
+  <section class="bg-brand-dark py-24">
+    <div class="mx-auto max-w-[1280px] px-6">
+      <h2
+        class="mb-16 text-3xl font-bold tracking-tight uppercase md:text-4xl"
+        data-reveal
+      >
+        <span class="text-brand-pink lowercase">dla</span> KOGO PRACUJEMY
+      </h2>
+
+      <div class="space-y-4">
+        {
+          clients.map((client, i) => (
+            <div
+              class="group border-l-2 border-brand-pink py-3 pl-6 transition-all duration-300 hover:border-l-4 hover:bg-brand-black/30 hover:pl-8"
+              data-reveal="left"
+              style={`--reveal-delay: ${i * 0.08}s`}
+            >
+              <p class="text-lg font-light text-brand-grey transition-colors duration-200 group-hover:text-white">
+                {client}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+
+      <p
+        class="mt-16 max-w-3xl text-lg leading-relaxed text-white"
+        data-reveal
+        style="--reveal-delay: 0.3s"
+      >
+        Znamy realia pracy w kulturze: wielozadaniowość, ograniczone budżety,
+        sezonowość, presję i pasję.
+      </p>
+    </div>
+  </section>
+
+  <!-- Ferment Kolektiv -->
+  <section class="bg-brand-black py-24">
+    <div class="mx-auto max-w-[1280px] px-6">
+      <div
+        class="spotlight rounded-2xl border border-brand-grey/20 bg-brand-dark p-8 md:p-12"
+        data-reveal
+      >
+        <div class="flex flex-col items-center gap-8 md:flex-row">
+          <a
+            href="https://ferment.com.pl/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="shrink-0 transition-opacity duration-200 hover:opacity-80"
+          >
+            <img src="/logo.webp" alt="Ferment" class="h-16 w-auto" />
+          </a>
+          <div>
+            <h3 class="mb-3 flex flex-wrap items-center gap-3 text-2xl font-bold text-white">
+              <span>HRup to część kolektywu</span>
+              <a
+                href="https://ferment.com.pl/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="transition-opacity duration-200 hover:opacity-80"
+              >
+                <img src="/logo.webp" alt="ferment" class="h-8 w-auto" />
+              </a>
+            </h3>
+            <p class="leading-relaxed text-brand-grey">
+              Zespół specjalistów wspierających instytucje kultury i kina w
+              Polsce. Od 2019 roku budujemy narzędzia i usługi, które pomagają
+              tworzyć lepsze doświadczenia kulturalne dla wszystkich.
+            </p>
+            <a
+              href="https://ferment.com.pl/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-brand-pink hover:underline"
+            >
+              Dowiedz się więcej o Ferment
+              <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none">
+                <path
+                  d="M4 12l8-8M6 4h6v6"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
