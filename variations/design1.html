@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kalkulator strat rotacji — HRup | Wariant 1: Projektor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --pink: #e00371;
+    --black: #000000;
+    --dark: #101010;
+    --grey: #717173;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: "Montserrat", Arial, sans-serif;
+    background: var(--black);
+    color: var(--white);
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  ::selection { background: var(--pink); color: var(--white); }
+
+  /* Film grain */
+  .grain {
+    position: fixed; inset: -50%; width: 200%; height: 200%;
+    pointer-events: none; z-index: 60; opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation: grain 1.2s steps(4) infinite;
+  }
+  @keyframes grain {
+    0% { transform: translate(0,0); } 25% { transform: translate(-2%,1%); }
+    50% { transform: translate(1%,-2%); } 75% { transform: translate(-1%,2%); }
+    100% { transform: translate(0,0); }
+  }
+
+  .wrap {
+    position: relative;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 96px 24px 120px;
+  }
+
+  /* Projector beam */
+  .beam {
+    position: fixed; inset: 0; pointer-events: none;
+    background: radial-gradient(ellipse 70% 55% at 50% -10%, rgba(224,3,113,0.14), transparent 70%);
+  }
+
+  .kicker {
+    font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--pink); font-weight: 600; text-align: center; margin-bottom: 20px;
+  }
+
+  h1 {
+    font-weight: 800; text-align: center;
+    font-size: clamp(28px, 5vw, 46px);
+    line-height: 1.12; letter-spacing: -0.02em;
+  }
+  h1 .accent { color: var(--pink); }
+
+  .sub {
+    text-align: center; color: var(--grey); margin: 18px auto 0;
+    max-width: 540px; font-size: 16px; line-height: 1.6;
+  }
+
+  /* Calculator card */
+  .card {
+    margin-top: 56px;
+    background: var(--dark);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 48px clamp(24px, 5vw, 56px);
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgba(224,3,113,0.07), transparent 70%);
+  }
+
+  .field { margin-bottom: 40px; position: relative; }
+  .field:last-of-type { margin-bottom: 0; }
+
+  label.field-label {
+    display: block; font-size: 13px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--white); margin-bottom: 16px;
+  }
+  label.field-label .num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: var(--pink); color: var(--white);
+    font-size: 12px; margin-right: 10px; vertical-align: middle;
+  }
+
+  /* Role picker — segmented */
+  .roles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  @media (max-width: 640px) { .roles { grid-template-columns: 1fr; } }
+  .role input { position: absolute; opacity: 0; }
+  .role span {
+    display: flex; flex-direction: column; gap: 6px;
+    border: 1px solid rgba(255,255,255,0.12); border-radius: 12px;
+    padding: 16px 14px; cursor: pointer;
+    transition: border-color .25s, background .25s, transform .25s;
+    height: 100%;
+  }
+  .role span b { font-size: 14px; font-weight: 700; }
+  .role span small { font-size: 12px; color: var(--grey); line-height: 1.45; }
+  .role input:checked + span {
+    border-color: var(--pink);
+    background: rgba(224,3,113,0.08);
+    transform: translateY(-2px);
+  }
+  .role input:focus-visible + span { outline: 2px solid var(--pink); outline-offset: 2px; }
+
+  /* Sliders */
+  .slider-row { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 14px; }
+  .slider-value { font-size: 26px; font-weight: 800; color: var(--pink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .slider-value small { font-size: 14px; color: var(--grey); font-weight: 400; margin-left: 4px; }
+
+  input[type="range"] {
+    -webkit-appearance: none; appearance: none;
+    width: 100%; height: 4px; border-radius: 2px;
+    background: linear-gradient(to right, var(--pink) 0%, var(--pink) var(--fill, 50%), rgba(255,255,255,0.14) var(--fill, 50%));
+    cursor: pointer;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--white); border: 5px solid var(--pink);
+    transition: transform .2s, box-shadow .2s;
+  }
+  input[type="range"]::-moz-range-thumb {
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--white); border: 5px solid var(--pink);
+  }
+  input[type="range"]:active::-webkit-slider-thumb,
+  input[type="range"]:hover::-webkit-slider-thumb {
+    transform: scale(1.15);
+    box-shadow: 0 0 24px rgba(224,3,113,0.55);
+  }
+  .slider-ends { display: flex; justify-content: space-between; font-size: 12px; color: var(--grey); margin-top: 10px; }
+
+  /* CTA button */
+  .calc-btn {
+    display: block; width: 100%; margin-top: 44px;
+    background: var(--pink); color: var(--white);
+    border: none; border-radius: 999px;
+    padding: 18px 32px; font-family: inherit;
+    font-size: 14px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+    cursor: pointer; transition: transform .3s, box-shadow .3s, background .3s;
+  }
+  .calc-btn:hover { transform: scale(1.02); box-shadow: 0 0 36px rgba(224,3,113,0.4); }
+
+  /* Result */
+  .result { margin-top: 32px; display: none; }
+  .result.show { display: block; }
+
+  .report {
+    background: var(--black);
+    border: 1px solid rgba(224,3,113,0.35);
+    border-radius: 20px;
+    padding: 40px clamp(24px, 5vw, 48px);
+  }
+  .report h2 {
+    font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--pink); font-weight: 700; margin-bottom: 28px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .line {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
+    padding: 14px 0; border-bottom: 1px dashed rgba(255,255,255,0.12);
+    opacity: 0; transform: translateY(14px);
+  }
+  .show .line { animation: rise .55s cubic-bezier(0.22,1,0.36,1) forwards; }
+  .show .line:nth-child(2) { animation-delay: .1s; }
+  .show .line:nth-child(3) { animation-delay: .2s; }
+  .show .line:nth-child(4) { animation-delay: .3s; }
+  .show .line:nth-child(5) { animation-delay: .4s; }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+
+  .line .name { font-size: 14px; color: #c9c9cb; line-height: 1.5; }
+  .line .amount { font-size: 17px; font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+  .total {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
+    margin-top: 24px; padding-top: 24px;
+    border-top: 2px solid var(--pink);
+    flex-wrap: wrap;
+  }
+  .total .name { font-size: 14px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .total .amount {
+    font-size: clamp(32px, 6vw, 48px); font-weight: 800; color: var(--pink);
+    font-variant-numeric: tabular-nums; letter-spacing: -0.02em;
+  }
+
+  .pitch {
+    margin-top: 28px; color: var(--grey); font-size: 15px; line-height: 1.7;
+  }
+  .pitch strong { color: var(--white); font-weight: 600; }
+  .pitch .product { color: var(--pink); font-weight: 700; }
+
+  .cta {
+    display: inline-block; margin-top: 28px;
+    background: var(--pink); color: var(--white); text-decoration: none;
+    border-radius: 999px; padding: 16px 36px;
+    font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    transition: transform .3s, box-shadow .3s;
+  }
+  .cta:hover { transform: scale(1.03); box-shadow: 0 0 36px rgba(224,3,113,0.4); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .grain { animation: none; }
+    .show .line { animation: none; opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="beam" aria-hidden="true"></div>
+
+<main class="wrap">
+  <p class="kicker">HRup &mdash; kalkulator dla kin</p>
+  <h1>Ile <span class="accent">naprawdę</span> kosztowało Cię<br />odejście ostatniego pracownika?</h1>
+  <p class="sub">Oblicz ukryte straty swojego kina. Trzy proste pytania &mdash; jeden bardzo nieprzyjemny wynik.</p>
+
+  <section class="card" id="card">
+    <div class="field">
+      <label class="field-label"><span class="num">1</span>Stanowisko pracownika, który odszedł</label>
+      <div class="roles" role="radiogroup">
+        <label class="role">
+          <input type="radio" name="role" value="front" checked />
+          <span><b>Pracownik frontowy</b><small>Kasjer / Bileter / Obsługa widza</small></span>
+        </label>
+        <label class="role">
+          <input type="radio" name="role" value="specialist" />
+          <span><b>Specjalista</b><small>Marketing / PR / Koordynator wydarzeń</small></span>
+        </label>
+        <label class="role">
+          <input type="radio" name="role" value="manager" />
+          <span><b>Kadra zarządzająca</b><small>Kierownik kina / Lider zespołu</small></span>
+        </label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="field-label" for="salary"><span class="num">2</span>Miesięczne wynagrodzenie brutto</label>
+      <div class="slider-row">
+        <span class="slider-value" id="salaryOut">5 000 zł<small>/ mies. brutto</small></span>
+      </div>
+      <input type="range" id="salary" min="4000" max="15000" step="250" value="5000" />
+      <div class="slider-ends"><span>4 000 zł</span><span>15 000 zł</span></div>
+    </div>
+
+    <div class="field">
+      <label class="field-label" for="months"><span class="num">3</span>Po ilu miesiącach od zatrudnienia odszedł?</label>
+      <div class="slider-row">
+        <span class="slider-value" id="monthsOut">2 mies.</span>
+      </div>
+      <input type="range" id="months" min="1" max="6" step="1" value="2" />
+      <div class="slider-ends"><span>1 miesiąc</span><span>6 miesięcy</span></div>
+    </div>
+
+    <button class="calc-btn" id="calcBtn" type="button">Oblicz realną stratę kina</button>
+  </section>
+
+  <section class="result" id="result" aria-live="polite">
+    <div class="report">
+      <h2>&#9888;&#65039; Podsumowanie Twoich strat</h2>
+      <div class="line"><span class="name">Koszt ponownego ogłoszenia i selekcji kandydatów</span><span class="amount" id="r1"></span></div>
+      <div class="line"><span class="name">Pensja wypłacona za nieefektywne miesiące wdrożenia</span><span class="amount" id="r2"></span></div>
+      <div class="line"><span class="name">Czas kierownika na gaszenie pożarów w grafiku</span><span class="amount" id="r3"></span></div>
+      <div class="line"><span class="name">Przeciążenie zespołu i spadek jakości obsługi widzów</span><span class="amount" id="r4"></span></div>
+      <div class="total">
+        <span class="name">&#128308; Realna strata Twojego kina</span>
+        <span class="amount" id="rTotal">0 zł</span>
+      </div>
+      <p class="pitch" id="pitch"></p>
+      <a class="cta" href="https://calendly.com/" target="_blank" rel="noopener">Umów bezpłatne 15&#8209;minutowe wideo i zatrzymaj straty</a>
+    </div>
+  </section>
+</main>
+
+<script>
+  const ROLES = {
+    front:      { recruitment: 2500,  managerHours: 20, product: "HRup Template",     productPrice: 2500 },
+    specialist: { recruitment: 6000,  managerHours: 40, product: "HRup Talent START", productPrice: 6000 },
+    manager:    { recruitment: 11000, managerHours: 60, product: "HRup Leader CORE",  productPrice: 11000 },
+  };
+  const HOURLY_RATE = 120;
+
+  const pln = (v) => String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0") + " zł";
+
+  const salary = document.getElementById("salary");
+  const months = document.getElementById("months");
+  const salaryOut = document.getElementById("salaryOut");
+  const monthsOut = document.getElementById("monthsOut");
+
+  function paintSlider(el) {
+    const pct = ((el.value - el.min) / (el.max - el.min)) * 100;
+    el.style.setProperty("--fill", pct + "%");
+  }
+  function monthsLabel(n) {
+    if (n === 1) return "1 miesiąc";
+    if (n >= 2 && n <= 4) return n + " miesiące";
+    return n + " miesięcy";
+  }
+  salary.addEventListener("input", () => {
+    salaryOut.innerHTML = pln(+salary.value) + "<small>/ mies. brutto</small>";
+    paintSlider(salary);
+  });
+  months.addEventListener("input", () => {
+    monthsOut.textContent = monthsLabel(+months.value);
+    paintSlider(months);
+  });
+  paintSlider(salary); paintSlider(months);
+  monthsOut.textContent = monthsLabel(+months.value);
+
+  function calculate() {
+    const role = ROLES[document.querySelector("input[name=role]:checked").value];
+    const pay = +salary.value;
+    const m = +months.value;
+
+    const recruitment = role.recruitment;
+    const wastedOnboarding = pay * m * 0.5;
+    const managerTime = role.managerHours * HOURLY_RATE;
+    const overload = pay * 2 * 0.25;
+    const total = recruitment + wastedOnboarding + managerTime + overload;
+
+    document.getElementById("r1").textContent = pln(recruitment);
+    document.getElementById("r2").textContent = pln(wastedOnboarding);
+    document.getElementById("r3").textContent = pln(managerTime);
+    document.getElementById("r4").textContent = pln(overload);
+
+    const result = document.getElementById("result");
+    result.classList.remove("show");
+    void result.offsetWidth; /* restart animations */
+    result.classList.add("show");
+
+    // Count-up total
+    const totalEl = document.getElementById("rTotal");
+    const start = performance.now(), dur = 900;
+    function tick(now) {
+      const t = Math.min((now - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      totalEl.textContent = pln(Math.round(total * eased));
+      if (t < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+
+    document.getElementById("pitch").innerHTML =
+      "Pomyłki rekrutacyjne w kulturze kosztują fortunę &mdash; <strong>nie musisz ponosić tego ryzyka po raz kolejny</strong>. " +
+      "Za ułamek tej straty możesz wdrożyć gotowy system <span class='product'>" + role.product + " za " + pln(role.productPrice) + "</span> " +
+      "lub oddać rekrutację ekspertom, którzy dopasują pracownika pod kątem mindsetu i wartości &mdash; i zabezpieczą go przed szybkim odejściem.";
+
+    result.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+  document.getElementById("calcBtn").addEventListener("click", calculate);
+
+  // Spotlight follow
+  const card = document.getElementById("card");
+  card.addEventListener("pointermove", (e) => {
+    const r = card.getBoundingClientRect();
+    card.style.setProperty("--mx", (e.clientX - r.left) + "px");
+    card.style.setProperty("--my", (e.clientY - r.top) + "px");
+  });
+</script>
+</body>
+</html>
